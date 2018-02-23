@@ -7,7 +7,7 @@ using LoadDistributionForTeachers.BLL.Infrastructure;
 
 namespace LoadDistributionForTeachers.BLL.Interfaces
 {
-    public interface IUserService
+    public interface IUserService : IDisposable
     {
         Task<OperationDetails> Create(UserDTO userDto);
         Task<ClaimsIdentity> Authenticate(UserDTO userDto);
