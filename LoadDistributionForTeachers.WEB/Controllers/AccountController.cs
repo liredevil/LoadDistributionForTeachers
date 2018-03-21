@@ -12,6 +12,7 @@ using LoadDistributionForTeachers.BLL.Infrastructure;
 
 namespace LoadDistributionForTeachers.WEB.Controllers
 {
+
     public class AccountController : Controller
     {
         private IUserService UserService
@@ -30,8 +31,10 @@ namespace LoadDistributionForTeachers.WEB.Controllers
             }
         }
 
-        public ActionResult Login()
+        [HttpGet]
+        public ActionResult Login(/*string returnUrl*/)
         {
+            //ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -39,7 +42,7 @@ namespace LoadDistributionForTeachers.WEB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginModel model)
         {
-            await SetInitialDataAsync();
+            //await SetInitialDataAsync();
             if (ModelState.IsValid)
             {
                 UserDTO userDto = new UserDTO { Email = model.Email, Password = model.Password };
@@ -67,6 +70,7 @@ namespace LoadDistributionForTeachers.WEB.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpGet]
         public ActionResult Register()
         {
             return View();
@@ -89,7 +93,11 @@ namespace LoadDistributionForTeachers.WEB.Controllers
                 };
                 OperationDetails operationDetails = await UserService.Create(userDto);
                 if (operationDetails.Succedeed)
-                    return View("SuccessRegister");
+                {
+                    TempData["message"] = string.Format("Регистрация успешна, войдите в аккаунт");
+
+                    return RedirectToAction("Index", "Home");
+                }
                 else
                     ModelState.AddModelError(operationDetails.Property, operationDetails.Message);
             }
