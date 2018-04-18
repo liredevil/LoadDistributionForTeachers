@@ -15,6 +15,9 @@ namespace LoadDistributionForTeachers.DAL.Repositories
         private ApplicationUserManager userManager;
         private ApplicationRoleManager roleManager;
         private IClientManager clientManager;
+        private AcademicDegreeRepository academicDegreeRepository;
+        private AcademicTitleRepository academicTitleRepository;
+        private EmployeeRepository employeeRepository;
 
         public IdentityUnitOfWork(string connectionString)
         {
@@ -37,6 +40,36 @@ namespace LoadDistributionForTeachers.DAL.Repositories
         public ApplicationRoleManager RoleManager
         {
             get { return roleManager; }
+        }
+
+        public IRepository<AcademicDegree> AcademicDegrees
+        {
+            get
+            {
+                if (academicDegreeRepository == null)
+                    academicDegreeRepository = new AcademicDegreeRepository(db);
+                return academicDegreeRepository;
+            }
+        }
+
+        public IRepository<AcademicTitle> AcademicTitles
+        {
+            get
+            {
+                if (academicTitleRepository == null)
+                    academicTitleRepository = new AcademicTitleRepository(db);
+                return academicTitleRepository;
+            }
+        }
+
+        public IRepository<Employee> Employees
+        {
+            get
+            {
+                if (employeeRepository == null)
+                    employeeRepository = new EmployeeRepository(db);
+                return employeeRepository;
+            }
         }
 
         public async Task SaveAsync()
