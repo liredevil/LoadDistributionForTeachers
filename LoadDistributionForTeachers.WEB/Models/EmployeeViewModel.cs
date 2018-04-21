@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace LoadDistributionForTeachers.DAL.Entities
+namespace LoadDistributionForTeachers.WEB.Models
 {
-    public class Employee
+    public class EmployeeViewModel
     {
         [Required]
         public int Id { get; set; }
@@ -21,11 +20,8 @@ namespace LoadDistributionForTeachers.DAL.Entities
         [Required]
         public string Patronymic { get; set; }
 
-        public int? AcademicDegreeId { get; set; }
-        public AcademicDegree AcademicDegree { get; set; }
-        
-        public int? AcademicTitleId { get; set; }
-        public AcademicTitle AcademicTitle { get; set; }
+        public int AcademicDegreeId { get; set; }
 
+        public int AcademicTitleId { get; set; }
     }
 }

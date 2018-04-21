@@ -1,4 +1,9 @@
-﻿using System;
+﻿using LoadDistributionForTeachers.BLL.Infrastructure;
+using LoadDistributionForTeachers.WEB.Util;
+using Ninject;
+using Ninject.Modules;
+using Ninject.Web.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +21,12 @@ namespace LoadDistributionForTeachers.WEB
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // внедрение зависимостей
+            NinjectModule dependencesModule = new DependencesModule();
+            NinjectModule serviceModule = new ServiceModule("DefaultConnection");
+            var kernel = new StandardKernel(dependencesModule, serviceModule);
+            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }
 }

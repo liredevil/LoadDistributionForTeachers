@@ -65,6 +65,11 @@
     <Compile Include="Interfaces\IClientManager.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Migrations\201804192019106_SampleMigrations.cs" />
+    <Compile Include="Migrations\201804192019106_SampleMigrations.Designer.cs">
+      <DependentUpon>201804192019106_SampleMigrations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AcademicDegreeRepository.cs" />
     <Compile Include="Repositories\AcademicTitleRepository.cs" />
@@ -76,6 +81,10 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201804192019106_SampleMigrations.resx">
+      <DependentUpon>201804192019106_SampleMigrations.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

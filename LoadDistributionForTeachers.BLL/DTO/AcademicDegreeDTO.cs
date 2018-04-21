@@ -1,20 +1,16 @@
-﻿using System;
+﻿using LoadDistributionForTeachers.DAL.Entities;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoadDistributionForTeachers.DAL.Entities
+namespace LoadDistributionForTeachers.BLL.DTO
 {
-    public class AcademicDegree
+    public class AcademicDegreeDTO
     {
-        [Required]
         public int Id { get; set; }
-
-        
         public string Title { get; set; }
-
         public ICollection<Employee> Employees { get; set; }
     }
 }

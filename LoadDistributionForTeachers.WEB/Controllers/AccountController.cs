@@ -42,7 +42,7 @@ namespace LoadDistributionForTeachers.WEB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginModel model)
         {
-            //await SetInitialDataAsync();
+            await SetInitialDataAsync();
             if (ModelState.IsValid)
             {
                 UserDTO userDto = new UserDTO { Email = model.Email, Password = model.Password };
