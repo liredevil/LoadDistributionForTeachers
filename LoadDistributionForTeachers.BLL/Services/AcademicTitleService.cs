@@ -33,13 +33,13 @@ namespace LoadDistributionForTeachers.BLL.Services
             };
 
             Database.AcademicTitles.Create(academicTitle);
-            Database.SaveAsync();
+            Database.Save();
         }
 
         public void DeleteAcademicTitle(int id)
         {
-            Database.AcademicDegrees.Delete(id);
-            Database.SaveAsync();
+            Database.AcademicTitles.Delete(id);
+            Database.Save();
         }
 
         public void Dispose()
@@ -47,7 +47,7 @@ namespace LoadDistributionForTeachers.BLL.Services
             Database.Dispose();
         }
 
-        public AcademicTitleDTO GetAcademicTitle(int? id)
+        public AcademicTitleDTO GetAcademicTitle(int? id)/// тоже вроде не нужен
         {
             if (id == null)
             {
@@ -61,7 +61,7 @@ namespace LoadDistributionForTeachers.BLL.Services
                 throw new ValidationException("AcademicTitl не найден", "");
             }
 
-            return new AcademicTitleDTO { Id = academicTitle.Id, Title = academicTitle.Title, Employees = academicTitle.Employees };
+            return new AcademicTitleDTO { Id = academicTitle.Id, Title = academicTitle.Title};
         }
 
         public IEnumerable<AcademicTitleDTO> GetAcademicTitles()

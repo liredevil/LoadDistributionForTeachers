@@ -18,6 +18,8 @@ namespace LoadDistributionForTeachers.DAL.Repositories
         private AcademicDegreeRepository academicDegreeRepository;
         private AcademicTitleRepository academicTitleRepository;
         private EmployeeRepository employeeRepository;
+        private AcademicDegreeEmployeeRepository academicDegreeEmployeeRepository;
+        private AcademicTitleEmployeeRepository academicTitleEmployeeRepository;
 
         public IdentityUnitOfWork(string connectionString)
         {
@@ -72,9 +74,36 @@ namespace LoadDistributionForTeachers.DAL.Repositories
             }
         }
 
+        public IAchievementEmployee<AcademicDegreeEmployee> AcademicDegreeEmployees
+        {
+            get
+            {
+                if (academicDegreeEmployeeRepository == null)
+                    academicDegreeEmployeeRepository = new AcademicDegreeEmployeeRepository(db);
+
+                return academicDegreeEmployeeRepository;
+            }
+        }
+
+        public IAchievementEmployee<AcademicTitleEmployee> AcademicTitleEmployees
+        {
+            get
+            {
+                if (academicTitleEmployeeRepository == null)
+                    academicTitleEmployeeRepository = new AcademicTitleEmployeeRepository(db);
+
+                return academicTitleEmployeeRepository;
+            }
+        }
+
         public async Task SaveAsync()
         {
             await db.SaveChangesAsync();
+        }
+
+        public void Save()
+        {
+            db.SaveChanges();
         }
 
         public void Dispose()

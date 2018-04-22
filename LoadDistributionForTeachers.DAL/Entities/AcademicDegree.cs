@@ -15,6 +15,6 @@ namespace LoadDistributionForTeachers.DAL.Entities
         
         public string Title { get; set; }
 
-        public ICollection<Employee> Employees { get; set; }
+        public ICollection<AcademicDegreeEmployee> AcademicDegreeEmployees { get; set; }
     }
 }

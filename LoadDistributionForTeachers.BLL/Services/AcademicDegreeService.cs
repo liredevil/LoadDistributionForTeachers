@@ -32,14 +32,15 @@ namespace LoadDistributionForTeachers.BLL.Services
                 Title = academicDegreeDTO.Title
             };
 
+
             Database.AcademicDegrees.Create(academicDegree);
-            Database.SaveAsync();
+            Database.Save();
         }
 
         public void DeleteAcademicDegree(int id)
         {
             Database.AcademicDegrees.Delete(id);
-            Database.SaveAsync();
+            Database.Save();
         }
 
         public IEnumerable<AcademicDegreeDTO> GetAcademicDegrees()
@@ -48,7 +49,7 @@ namespace LoadDistributionForTeachers.BLL.Services
             return mapper.Map<IEnumerable<AcademicDegree>, List<AcademicDegreeDTO>>(Database.AcademicDegrees.GetAll());
         }
 
-        public AcademicDegreeDTO GetAcademicDegree(int? id)
+        public AcademicDegreeDTO GetAcademicDegree(int? id)//// вроде он не нужен
         {
             if(id == null)
             {
@@ -62,7 +63,7 @@ namespace LoadDistributionForTeachers.BLL.Services
                 throw new ValidationException("AcademicDegree не найден", "");
             }
 
-            return new AcademicDegreeDTO { Id = academicDegree.Id, Title = academicDegree.Title, Employees = academicDegree.Employees };
+            return new AcademicDegreeDTO { Id = academicDegree.Id, Title = academicDegree.Title };
         }
 
         public void Dispose()

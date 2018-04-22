@@ -27,26 +27,29 @@ namespace LoadDistributionForTeachers.BLL.Services
             {
                 throw new ValidationException("Введите данные", "");
             }
+            
             Employee employee = new Employee
             {
                 FirstName = employeeDTO.FirstName,
                 LastName = employeeDTO.LastName,
-                Patronymic = employeeDTO.Patronymic,
-                AcademicDegreeId = employeeDTO.AcademicDegree.Id,
-                AcademicTitleId = employeeDTO.AcademicTitle.Id
+                Patronymic = employeeDTO.Patronymic
             };
+            
 
             Database.Employees.Create(employee);
-            Database.SaveAsync();
+            Database.Save();
+
+            Database.AcademicDegreeEmployees.AddDate(employee.Id, employeeDTO.AcademicDegreeDTOId);
+            Database.Save();
         }
 
         public void DeleteEmployee(int id)
         {
             Database.Employees.Delete(id);
-            Database.SaveAsync();
+            Database.Save();
         }
 
-        public EmployeeDTO GetEmployee(int? id)
+        public EmployeeDTO GetEmployee(int? id)///переделать для редактирования
         {
             if (id == null)
             {
@@ -60,7 +63,7 @@ namespace LoadDistributionForTeachers.BLL.Services
                 throw new ValidationException("Employee не найден", "");
             }
 
-            return new EmployeeDTO { Id = employee.Id, FirstName = employee.FirstName, LastName = employee.LastName, Patronymic = employee.Patronymic, AcademicDegree = employee.AcademicDegree, AcademicTitle = employee.AcademicTitle };
+            return new EmployeeDTO { Id = employee.Id, FirstName = employee.FirstName, LastName = employee.LastName, Patronymic = employee.Patronymic };
         }
 
         public IEnumerable<EmployeeDTO> GetEmployees()

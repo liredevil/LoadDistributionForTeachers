@@ -21,11 +21,15 @@ namespace LoadDistributionForTeachers.DAL.Entities
         [Required]
         public string Patronymic { get; set; }
 
-        public int? AcademicDegreeId { get; set; }
-        public AcademicDegree AcademicDegree { get; set; }
-        
-        public int? AcademicTitleId { get; set; }
-        public AcademicTitle AcademicTitle { get; set; }
+        public ICollection<AcademicDegreeEmployee> AcademicDegreeEmployees { get; set; }
+
+        public ICollection<AcademicTitleEmployee> AcademicTitleEmployees { get; set; }
+
+        //public int? AcademicDegreeEmployeeId { get; set; }
+        //public AcademicDegreeEmployee AcademicDegreeEmployee { get; set; }
+
+        //public int? AcademicTitleEmployeeId { get; set; }
+        //public AcademicTitleEmployee GetAcademicTitleEmployee { get; set; }
 
     }
 }

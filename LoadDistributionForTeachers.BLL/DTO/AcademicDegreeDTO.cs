@@ -11,6 +11,7 @@ namespace LoadDistributionForTeachers.BLL.DTO
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public ICollection<Employee> Employees { get; set; }
+
+        public ICollection<EmployeeDTO> EmployeeDTOs { get; set; }
     }
 }

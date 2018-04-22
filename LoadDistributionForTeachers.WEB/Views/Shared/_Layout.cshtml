@@ -9,6 +9,10 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success" id="success-alert">@TempData["message"]</div>
+    }
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">

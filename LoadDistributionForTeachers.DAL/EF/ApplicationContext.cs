@@ -10,6 +10,8 @@ namespace LoadDistributionForTeachers.DAL.EF
         public DbSet<AcademicDegree> AcademicDegrees { get; set; }
         public DbSet<AcademicTitle> AcademicTitles { get; set; }
         public DbSet<ClientProfile> ClientProfiles { get; set; }
+        public DbSet<AcademicDegreeEmployee> AcademicDegreeEmployees { get; set; }
+        public DbSet<AcademicTitleEmployee> AcademicTitleEmployees { get; set; }
 
         static ApplicationContext()
         {

@@ -4,11 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>List Employees</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <div class="btn-group">
+        @Html.ActionLink("Create Employee", "CreateEmployee", "Employee", null, new { @class = "btn btn-primary" })
+    </div>
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -21,10 +24,10 @@
             @Html.DisplayNameFor(model => model.Patronymic)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AcademicDegreeId)
+            @Html.DisplayNameFor(model => model.AcademicDegreeIdViewModel)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AcademicTitleId)
+            @Html.DisplayNameFor(model => model.AcademicTitleIdViewModel)
         </th>
         <th></th>
     </tr>
@@ -41,15 +44,15 @@
             @Html.DisplayFor(modelItem => item.Patronymic)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AcademicDegreeId)
+            @Html.DisplayFor(modelItem => item.AcademicDegreeIdViewModel)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AcademicTitleId)
+            @Html.DisplayFor(modelItem => item.AcademicTitleIdViewModel)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
+            @Html.ActionLink("Delete", "DeleteEmployee", new { id=item.Id })
         </td>
     </tr>
 }
