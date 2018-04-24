@@ -32,15 +32,18 @@ namespace LoadDistributionForTeachers.BLL.Services
             {
                 FirstName = employeeDTO.FirstName,
                 LastName = employeeDTO.LastName,
-                Patronymic = employeeDTO.Patronymic
+                Patronymic = employeeDTO.Patronymic,
+                AcademicDegreeId = employeeDTO.AcademicDegreeDTOId,
+                AcademicTitleId = employeeDTO.AcademicTitleDTOId
             };
             
 
             Database.Employees.Create(employee);
             Database.Save();
 
-            Database.AcademicDegreeEmployees.AddDate(employee.Id, employeeDTO.AcademicDegreeDTOId);
-            Database.Save();
+            //Database.AcademicDegreeEmployees.AddDate(employee.Id, employeeDTO.AcademicDegreeDTOId);
+            //Database.AcademicTitleEmployees.AddDate(employee.Id, employeeDTO.AcademicTitleDTOId);
+            //Database.Save();
         }
 
         public void DeleteEmployee(int id)
@@ -68,10 +71,51 @@ namespace LoadDistributionForTeachers.BLL.Services
 
         public IEnumerable<EmployeeDTO> GetEmployees()
         {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Employee, EmployeeDTO>()).CreateMapper();
-            return mapper.Map<IEnumerable<Employee>, List<EmployeeDTO>>(Database.Employees.GetAll());
-        }
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Employee, EmployeeDTO>()
+            .ForMember(dest => dest.AcademicDegreeDTOId,
+            opts => opts.MapFrom(scr => scr.AcademicDegreeId))
+            .ForMember(dest => dest.AcademicTitleDTOId,
+            opts => opts.MapFrom(scr => scr.AcademicTitleId)))
+            .CreateMapper();
 
+            List<EmployeeDTO> a = new List<EmployeeDTO>();
+            var employeeDTOs = mapper.Map<IEnumerable<Employee>, List<EmployeeDTO>>(Database.Employees.GetAll());
+
+            List<AcademicDegree> academicDegrees = new List<AcademicDegree>();
+            academicDegrees = Database.AcademicDegrees.GetAll().ToList();
+
+            List<AcademicTitle> academicTitles = new List<AcademicTitle>();
+            academicTitles = Database.AcademicTitles.GetAll().ToList();
+
+            foreach (EmployeeDTO item in employeeDTOs)
+            {
+                for (int i = 0; i < academicDegrees.Count(); i++)
+                {
+                    if (academicDegrees[i].Id == item.AcademicDegreeDTOId)
+                    {
+                        for (int j = 0; j < academicTitles.Count(); j++)
+                        {
+                            if (academicTitles[j].Id == item.AcademicTitleDTOId)
+                            {
+                                a.Add(new EmployeeDTO
+                                {
+                                    Id = item.Id,
+                                    FirstName = item.FirstName,
+                                    LastName = item.LastName,
+                                    Patronymic = item.Patronymic,
+                                    AcademicDegreeTitle = academicDegrees[i].Title,
+                                    AcademicTitleName = academicTitles[j].Title
+                                });
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            return a;
+            //return mapper.Map<IEnumerable<Employee>, List<EmployeeDTO>>(Database.Employees.GetAll());
+        }
         public void Dispose()
         {
             Database.Dispose();

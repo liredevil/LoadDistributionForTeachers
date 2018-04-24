@@ -195,6 +195,7 @@
     </Compile>
     <Compile Include="Models\AcademicDegreeViewModel.cs" />
     <Compile Include="Models\AcademicTitleViewModel.cs" />
+    <Compile Include="Models\EmployeeCreateModel.cs" />
     <Compile Include="Models\EmployeeViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />

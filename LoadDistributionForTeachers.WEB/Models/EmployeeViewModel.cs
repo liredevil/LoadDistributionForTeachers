@@ -20,11 +20,8 @@ namespace LoadDistributionForTeachers.WEB.Models
         [Required]
         public string Patronymic { get; set; }
 
+        public string AcademicDegreeTitle { get; set; }
 
-        public int AcademicDegreeIdViewModel { get; set; }
-        public AcademicDegreeViewModel AcademicDegreeViewModel { get; set; }
-
-        public int AcademicTitleIdViewModel { get; set; }
-        public AcademicTitleViewModel AcademicTitleViewModel { get; set; }
+        public string AcademicTitleName { get; set; }
     }
 }

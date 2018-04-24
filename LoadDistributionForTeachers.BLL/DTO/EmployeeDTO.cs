@@ -18,9 +18,11 @@ namespace LoadDistributionForTeachers.BLL.DTO
         public string Patronymic { get; set; }
 
         public int AcademicDegreeDTOId { get; set; }
-        public AcademicDegreeDTO AcademicDegreeDTO { get; set; }
 
         public int AcademicTitleDTOId { get; set; }
-        public AcademicTitleDTO AcademicTitleDTO { get; set; }
+
+        public string AcademicDegreeTitle { get; set; }
+
+        public string AcademicTitleName { get; set; }
     }
 }

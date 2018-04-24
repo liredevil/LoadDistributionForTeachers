@@ -30,9 +30,13 @@ namespace LoadDistributionForTeachers.WEB.Controllers
         public ActionResult Index()
         {
             IEnumerable<EmployeeDTO> employeeDTOs = employeeService.GetEmployees();
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<EmployeeDTO, EmployeeViewModel>()).CreateMapper();
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<EmployeeDTO, EmployeeViewModel>())
+            .CreateMapper();
+
             var employees = mapper.Map<IEnumerable<EmployeeDTO>, List<EmployeeViewModel>>(employeeDTOs);
+
             
+
             return View(employees);
         }
 
@@ -57,16 +61,16 @@ namespace LoadDistributionForTeachers.WEB.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateEmployee(EmployeeViewModel employeeViewModel, int academicDegreeTitle,int academicTitleName)
+        public ActionResult CreateEmployee(EmployeeCreateModel employeeCreateModel, int academicDegreeTitle,int academicTitleName)
         {
             try
             {
                 if(ModelState.IsValid)
                 {
                     var employeeDTO = new EmployeeDTO {
-                        FirstName = employeeViewModel.FirstName,
-                        LastName = employeeViewModel.LastName,
-                        Patronymic = employeeViewModel.Patronymic,
+                        FirstName = employeeCreateModel.FirstName,
+                        LastName = employeeCreateModel.LastName,
+                        Patronymic = employeeCreateModel.Patronymic,
                         AcademicDegreeDTOId = academicDegreeTitle,
                         AcademicTitleDTOId = academicTitleName
                     };
@@ -83,7 +87,7 @@ namespace LoadDistributionForTeachers.WEB.Controllers
                 ModelState.AddModelError(ex.Property, ex.Message);
             }
 
-            return View(employeeViewModel);
+            return View(employeeCreateModel);
         }
 
         public ActionResult DeleteEmployee(int id)

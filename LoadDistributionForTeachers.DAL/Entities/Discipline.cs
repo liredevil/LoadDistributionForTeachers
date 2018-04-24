@@ -7,14 +7,11 @@ using System.Threading.Tasks;
 
 namespace LoadDistributionForTeachers.DAL.Entities
 {
-    public class AcademicDegree
+    public class Discipline
     {
-        [Required]
         public int Id { get; set; }
 
-        
-        public string Title { get; set; }
-
-        public ICollection<Employee> Employees { get; set; }
+        [Required]
+        public string Name { get; set; }
     }
 }
