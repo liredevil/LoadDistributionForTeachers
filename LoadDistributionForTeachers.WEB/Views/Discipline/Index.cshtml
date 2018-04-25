@@ -1,0 +1,35 @@
+﻿@model IEnumerable<LoadDistributionForTeachers.WEB.Models.DisciplineViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<p>
+    <div class="btn-group">
+        @Html.ActionLink("Create Discipline", "CreateDiscipline", "Discipline", null, new { @class = "btn btn-primary" })
+    </div>
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+            @Html.ActionLink("Delete", "DeleteDiscipline", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

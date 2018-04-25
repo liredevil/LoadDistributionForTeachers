@@ -186,15 +186,19 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AcademicDegreeController.cs" />
+    <Compile Include="Controllers\AcademicPlanController.cs" />
     <Compile Include="Controllers\AcademicTitleController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DisciplineController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AcademicDegreeViewModel.cs" />
+    <Compile Include="Models\AcademicPlanViewModel.cs" />
     <Compile Include="Models\AcademicTitleViewModel.cs" />
+    <Compile Include="Models\DisciplineViewModel.cs" />
     <Compile Include="Models\EmployeeCreateModel.cs" />
     <Compile Include="Models\EmployeeViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -259,6 +263,10 @@
     <Content Include="Views\AcademicDegree\CreateAcademicDegree.cshtml" />
     <Content Include="Views\AcademicTitle\Index.cshtml" />
     <Content Include="Views\AcademicTitle\CreateAcademicTitle.cshtml" />
+    <Content Include="Views\Discipline\Index.cshtml" />
+    <Content Include="Views\Discipline\CreateDiscipline.cshtml" />
+    <Content Include="Views\AcademicPlan\Index.cshtml" />
+    <Content Include="Views\AcademicPlan\CreateAcademicPlan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

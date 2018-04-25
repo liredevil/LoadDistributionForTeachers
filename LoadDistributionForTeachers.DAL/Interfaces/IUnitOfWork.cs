@@ -13,6 +13,8 @@ namespace LoadDistributionForTeachers.DAL.Interfaces
         IRepository<Employee> Employees { get; }
         IRepository<AcademicDegree> AcademicDegrees { get; }
         IRepository<AcademicTitle> AcademicTitles { get; }
+        IRepository<Discipline> Disciplines { get; }
+        IRepository<AcademicPlan> AcademicPlans { get; }
         Task SaveAsync();
         void Save();
     }

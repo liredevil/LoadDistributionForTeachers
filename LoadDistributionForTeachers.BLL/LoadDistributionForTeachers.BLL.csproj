@@ -61,20 +61,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\AcademicDegreeDTO.cs" />
+    <Compile Include="DTO\AcademicPlanDTO.cs" />
     <Compile Include="DTO\AcademicTitleDTO.cs" />
+    <Compile Include="DTO\DisciplineDTO.cs" />
     <Compile Include="DTO\EmployeeDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Infrastructure\OperationDetails.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Infrastructure\ValidationException.cs" />
     <Compile Include="Interfaces\IAcademicDegreeService.cs" />
+    <Compile Include="Interfaces\IAcademicPlanService.cs" />
     <Compile Include="Interfaces\IAcademicTitleService.cs" />
+    <Compile Include="Interfaces\IDisciplineService.cs" />
     <Compile Include="Interfaces\IEmployeeService.cs" />
     <Compile Include="Interfaces\IServiceCreator.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AcademicDegreeService.cs" />
+    <Compile Include="Services\AcademicPlanService.cs" />
     <Compile Include="Services\AcademicTitleService.cs" />
+    <Compile Include="Services\DisciplineService.cs" />
     <Compile Include="Services\EmployeeService.cs" />
     <Compile Include="Services\ServiceCreator.cs" />
     <Compile Include="Services\UserService.cs" />

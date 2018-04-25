@@ -55,28 +55,40 @@
   <ItemGroup>
     <Compile Include="EF\ApplicationContext.cs" />
     <Compile Include="Entities\AcademicDegree.cs" />
+    <Compile Include="Entities\AcademicPlan.cs" />
     <Compile Include="Entities\AcademicTitle.cs" />
     <Compile Include="Entities\ApplicationRole.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\ClientProfile.cs" />
+    <Compile Include="Entities\Discipline.cs" />
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Identity\ApplicationRoleManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
-    <Compile Include="Interfaces\IAchievementEmployee.cs" />
     <Compile Include="Interfaces\IClientManager.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Migrations\201804252312228_SampleMigrations.cs" />
+    <Compile Include="Migrations\201804252312228_SampleMigrations.Designer.cs">
+      <DependentUpon>201804252312228_SampleMigrations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\AcademicDegreeEmployeeRepository.cs" />
     <Compile Include="Repositories\AcademicDegreeRepository.cs" />
+    <Compile Include="Repositories\AcademicPlanRepository.cs" />
     <Compile Include="Repositories\AcademicTitleRepository.cs" />
     <Compile Include="Repositories\ClientManager.cs" />
+    <Compile Include="Repositories\DisciplineRepository.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Repositories\IdentityUnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201804252312228_SampleMigrations.resx">
+      <DependentUpon>201804252312228_SampleMigrations.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

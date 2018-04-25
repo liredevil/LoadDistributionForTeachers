@@ -11,25 +11,26 @@ namespace LoadDistributionForTeachers.DAL.EF
         public DbSet<AcademicTitle> AcademicTitles { get; set; }
         public DbSet<ClientProfile> ClientProfiles { get; set; }
         public DbSet<Discipline> Disciplines { get; set; }
+        public DbSet<AcademicPlan> AcademicPlans { get; set; }
 
         static ApplicationContext()
         {
-            Database.SetInitializer<ApplicationContext>(new DropCreateDatabaseIfModelChanges<ApplicationContext>());
+            Database.SetInitializer<ApplicationContext>(new CreateDatabaseIfNotExists<ApplicationContext>());
         }
 
         public ApplicationContext(string conectionString)
             : base(conectionString) { }
 
 
-        //public ApplicationContext()
-        //    : base("DefaultConnection", throwIfV1Schema: false)
-        //{
+        public ApplicationContext()
+            : base("DefaultConnection", throwIfV1Schema: false)
+        {
 
-        //}
+        }
 
-        //public static ApplicationContext Create()
-        //{
-        //    return new ApplicationContext();
-        //}
+        public static ApplicationContext Create()
+        {
+            return new ApplicationContext();
+        }
     }
 }

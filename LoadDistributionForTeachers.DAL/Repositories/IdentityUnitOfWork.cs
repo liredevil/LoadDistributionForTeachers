@@ -18,6 +18,8 @@ namespace LoadDistributionForTeachers.DAL.Repositories
         private AcademicDegreeRepository academicDegreeRepository;
         private AcademicTitleRepository academicTitleRepository;
         private EmployeeRepository employeeRepository;
+        private DisciplineRepository disciplineRepository;
+        private AcademicPlanRepository academicPlanRepository;
 
         public IdentityUnitOfWork(string connectionString)
         {
@@ -69,6 +71,32 @@ namespace LoadDistributionForTeachers.DAL.Repositories
                 if (employeeRepository == null)
                     employeeRepository = new EmployeeRepository(db);
                 return employeeRepository;
+            }
+        }
+
+        public IRepository<Discipline> Disciplines
+        {
+            get
+            {
+                if (disciplineRepository == null)
+                {
+                    disciplineRepository = new DisciplineRepository(db);
+                }
+
+                return disciplineRepository;
+            }
+        }
+
+        public IRepository<AcademicPlan> AcademicPlans
+        {
+            get
+            {
+                if (academicPlanRepository == null)
+                {
+                    academicPlanRepository = new AcademicPlanRepository(db);
+                }
+
+                return academicPlanRepository;
             }
         }
 
