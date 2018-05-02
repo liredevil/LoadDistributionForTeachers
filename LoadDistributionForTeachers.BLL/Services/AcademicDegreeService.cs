@@ -32,7 +32,6 @@ namespace LoadDistributionForTeachers.BLL.Services
                 Title = academicDegreeDTO.Title
             };
 
-
             Database.AcademicDegrees.Create(academicDegree);
             Database.Save();
         }
@@ -49,7 +48,7 @@ namespace LoadDistributionForTeachers.BLL.Services
             return mapper.Map<IEnumerable<AcademicDegree>, List<AcademicDegreeDTO>>(Database.AcademicDegrees.GetAll());
         }
 
-        public AcademicDegreeDTO GetAcademicDegree(int? id)//// вроде он не нужен
+        public AcademicDegreeDTO GetAcademicDegree(int? id)
         {
             if(id == null)
             {

@@ -13,5 +13,7 @@ namespace LoadDistributionForTeachers.DAL.Entities
 
         [Required]
         public string Name { get; set; }
+
+        public ICollection<ContentOfThePlan> ContentOfThePlans { get; set; }
     }
 }
