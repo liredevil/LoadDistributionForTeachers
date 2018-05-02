@@ -1,0 +1,65 @@
+﻿@model IEnumerable<LoadDistributionForTeachers.WEB.Models.ContentOfThePlanViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <div class="btn-group">
+        @Html.ActionLink("Create ContentOfThePlan", "CreateContentOfThePlane", "ContentOfThePlan", null, new { @class = "btn btn-primary" })
+    </div>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfHoursOfLectures)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfHoursOfPractice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SemesterNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reporting)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GroupCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DisciplineTitle)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfHoursOfLectures)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfHoursOfPractice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SemesterNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reporting)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GroupCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisciplineTitle)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
+            @Html.ActionLink("Delete", "DeleteContentOfThePlane", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

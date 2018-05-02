@@ -189,20 +189,26 @@
     <Compile Include="Controllers\AcademicPlanController.cs" />
     <Compile Include="Controllers\AcademicTitleController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContentOfThePlanController.cs" />
     <Compile Include="Controllers\DisciplineController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SubgroupController.cs" />
+    <Compile Include="Controllers\TypeOfEmployeeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AcademicDegreeViewModel.cs" />
     <Compile Include="Models\AcademicPlanViewModel.cs" />
     <Compile Include="Models\AcademicTitleViewModel.cs" />
+    <Compile Include="Models\ContentOfThePlanViewModel.cs" />
     <Compile Include="Models\DisciplineViewModel.cs" />
     <Compile Include="Models\EmployeeCreateModel.cs" />
     <Compile Include="Models\EmployeeViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\SubgroupViewModel.cs" />
+    <Compile Include="Models\TypeOfEmployeeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\DependencesModule.cs" />
   </ItemGroup>
@@ -267,6 +273,12 @@
     <Content Include="Views\Discipline\CreateDiscipline.cshtml" />
     <Content Include="Views\AcademicPlan\Index.cshtml" />
     <Content Include="Views\AcademicPlan\CreateAcademicPlan.cshtml" />
+    <Content Include="Views\Subgroup\Index.cshtml" />
+    <Content Include="Views\Subgroup\CreateSubgroup.cshtml" />
+    <Content Include="Views\TypeOfEmployee\Index.cshtml" />
+    <Content Include="Views\TypeOfEmployee\CreateTypeOfEmployee.cshtml" />
+    <Content Include="Views\ContentOfThePlan\Index.cshtml" />
+    <Content Include="Views\ContentOfThePlan\CreateContentOfThePlane.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

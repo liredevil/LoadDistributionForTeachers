@@ -12,6 +12,9 @@ namespace LoadDistributionForTeachers.DAL.EF
         public DbSet<ClientProfile> ClientProfiles { get; set; }
         public DbSet<Discipline> Disciplines { get; set; }
         public DbSet<AcademicPlan> AcademicPlans { get; set; }
+        public DbSet<Subgroup> Subgroups { get; set; }
+        public DbSet<TypeOfEmployee> TypeOfEmployees { get; set; }
+        public DbSet<ContentOfThePlan> ContentOfThePlans { get; set; }
 
         static ApplicationContext()
         {

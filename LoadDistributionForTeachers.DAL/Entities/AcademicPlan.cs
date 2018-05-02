@@ -11,5 +11,7 @@ namespace LoadDistributionForTeachers.DAL.Entities
         public int Id { get; set; }
         public int GroupCode { get; set; }
         public string NameOfSpecialty { get; set; }
+
+        public ICollection<ContentOfThePlan> ContentOfThePlans { get; set; }
     }
 }

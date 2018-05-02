@@ -35,8 +35,6 @@ namespace LoadDistributionForTeachers.WEB.Controllers
 
             var employees = mapper.Map<IEnumerable<EmployeeDTO>, List<EmployeeViewModel>>(employeeDTOs);
 
-            
-
             return View(employees);
         }
 
@@ -111,6 +109,8 @@ namespace LoadDistributionForTeachers.WEB.Controllers
         protected override void Dispose(bool disposing)
         {
             employeeService.Dispose();
+            academicDegreeService.Dispose();
+            academicTitleService.Dispose();
             base.Dispose(disposing);
         }
     }

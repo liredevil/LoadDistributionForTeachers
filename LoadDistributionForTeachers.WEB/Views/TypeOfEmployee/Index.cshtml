@@ -1,0 +1,35 @@
+﻿@model IEnumerable<LoadDistributionForTeachers.WEB.Models.TypeOfEmployeeViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <div class="btn-group">
+        @Html.ActionLink("TypeOfEmployee", "CreateTypeOfEmployee", "TypeOfEmployee", null, new { @class = "btn btn-primary" })
+    </div>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
+            @Html.ActionLink("Delete", "DeleteTypeOfEmployee", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

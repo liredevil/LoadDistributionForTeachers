@@ -17,6 +17,9 @@ namespace LoadDistributionForTeachers.WEB.Util
             Bind<IEmployeeService>().To<EmployeeService>();
             Bind<IDisciplineService>().To<DisciplineService>();
             Bind<IAcademicPlanService>().To<AcademicPlanService>();
+            Bind<ISubgroupService>().To<SubgroupService>();
+            Bind<ITypeOfEmployeeService>().To<TypeOfEmployeeService>();
+            Bind<IContentOfThePlanService>().To<ContentOfThePlanService>();
         }
     }
 }
