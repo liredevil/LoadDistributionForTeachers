@@ -4,11 +4,11 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Список учебных планов</h2>
 
 <p>
     <div class="btn-group">
-        @Html.ActionLink("Create Academic Plan", "CreateAcademicPlan", "AcademicPlan", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Добавить учебный план", "CreateAcademicPlan", "AcademicPlan", null, new { @class = "btn btn-primary" })
     </div>
 </p>
 <table class="table">
@@ -33,7 +33,7 @@
         <td>
             @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
-            @Html.ActionLink("Delete", "DeleteAcademicPlan", new { id=item.Id })
+            @Html.ActionLink("Удалить", "DeleteAcademicPlan", new { id=item.Id })
         </td>
     </tr>
 }

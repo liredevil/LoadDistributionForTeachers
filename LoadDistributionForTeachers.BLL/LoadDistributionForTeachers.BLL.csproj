@@ -66,6 +66,7 @@
     <Compile Include="DTO\ContentOfThePlanDTO.cs" />
     <Compile Include="DTO\DisciplineDTO.cs" />
     <Compile Include="DTO\EmployeeDTO.cs" />
+    <Compile Include="DTO\LoadSubgroupDTO.cs" />
     <Compile Include="DTO\SubgroupDTO.cs" />
     <Compile Include="DTO\TypeOfEmployeeDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Interfaces\IContentOfThePlanService.cs" />
     <Compile Include="Interfaces\IDisciplineService.cs" />
     <Compile Include="Interfaces\IEmployeeService.cs" />
+    <Compile Include="Interfaces\ILoadSubgroupService.cs" />
     <Compile Include="Interfaces\IServiceCreator.cs" />
     <Compile Include="Interfaces\ISubgroupService.cs" />
     <Compile Include="Interfaces\ITypeOfEmployeeService.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="Services\ContentOfThePlanService.cs" />
     <Compile Include="Services\DisciplineService.cs" />
     <Compile Include="Services\EmployeeService.cs" />
+    <Compile Include="Services\LoadSubgroupService.cs" />
     <Compile Include="Services\ServiceCreator.cs" />
     <Compile Include="Services\SubgroupService.cs" />
     <Compile Include="Services\TypeOfEmployeeService.cs" />

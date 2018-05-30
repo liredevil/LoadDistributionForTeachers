@@ -12,7 +12,7 @@ using LoadDistributionForTeachers.DAL.Interfaces;
 
 namespace LoadDistributionForTeachers.BLL.Services
 {
-    public class TypeOfEmployeeService : ITypeOfEmployeeService
+    /*public class TypeOfEmployeeService : ITypeOfEmployeeService
     {
         IUnitOfWork Database { get; set; }
 
@@ -69,5 +69,5 @@ namespace LoadDistributionForTeachers.BLL.Services
         {
             Database.Dispose();
         }
-    }
+    }*/
 }

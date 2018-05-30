@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace LoadDistributionForTeachers.DAL.Entities
 {
-    public class TypeOfEmployee
-    {
-        [Required]
-        public int Id { get; set; }
+    //public class TypeOfEmployee
+    //{
+    //    [Required]
+    //    public int Id { get; set; }
 
-        [Required]
-        public string Title { get; set; }
-    }
+    //    [Required]
+    //    public string Title { get; set; }
+    //    public ICollection<LoadSubgroup> LoadSubgroups { get; set; }
+    //}
 }

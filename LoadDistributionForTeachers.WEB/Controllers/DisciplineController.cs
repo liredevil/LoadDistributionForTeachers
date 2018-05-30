@@ -52,7 +52,7 @@ namespace LoadDistributionForTeachers.WEB.Controllers
 
                     disciplineService.CreateDiscipline(disciplineDTO);
 
-                    TempData["message"] = string.Format("Discipline Title successful added");
+                    TempData["message"] = string.Format("Дисциплина была добавлена");
 
                     return RedirectToAction("index");
                 }
@@ -71,7 +71,7 @@ namespace LoadDistributionForTeachers.WEB.Controllers
             {
                 disciplineService.DeleteDiscipline(id);
 
-                TempData["message"] = string.Format("Discipline successful deleted");
+                TempData["message"] = string.Format("Дисциплина была удалена");
 
                 return RedirectToAction("index");
             }

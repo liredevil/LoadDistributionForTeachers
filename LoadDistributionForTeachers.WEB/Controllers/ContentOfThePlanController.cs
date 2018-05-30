@@ -75,7 +75,7 @@ namespace LoadDistributionForTeachers.WEB.Controllers
 
                     contentOfThePlanService.CreateContentOfThePlan(contentOfThePlanDTO);
 
-                    TempData["message"] = string.Format("ContentOfThePlan successful added");
+                    TempData["message"] = string.Format("Информация об ученом плане была добавлена");
 
                     return RedirectToAction("index");
                 }
@@ -94,7 +94,7 @@ namespace LoadDistributionForTeachers.WEB.Controllers
             {
                 contentOfThePlanService.DeleteContentOfThePlan(id);
 
-                TempData["message"] = string.Format("ContentOfThePlane successful deleted");
+                TempData["message"] = string.Format("Информация об ученом плане была удалена");
 
                 return RedirectToAction("index");
             }

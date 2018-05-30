@@ -21,8 +21,9 @@ namespace LoadDistributionForTeachers.DAL.Repositories
         private DisciplineRepository disciplineRepository;
         private AcademicPlanRepository academicPlanRepository;
         private SubgroupRepository subgroupRepository;
-        private TypeOfEmployeeRepository typeOfEmployeeRepository;
+        //private TypeOfEmployeeRepository typeOfEmployeeRepository;
         private ContentOfThePlanRepository contentOfThePlanRepository;
+        private LoadSubgroupRepository loadSubgroupRepository;
 
         public IdentityUnitOfWork(string connectionString)
         {
@@ -116,18 +117,18 @@ namespace LoadDistributionForTeachers.DAL.Repositories
             }
         }
 
-        public IRepository<TypeOfEmployee> TypeOfEmployees
-        {
-            get
-            {
-                if (typeOfEmployeeRepository == null)
-                {
-                    typeOfEmployeeRepository = new TypeOfEmployeeRepository(db);
-                }
+        //public IRepository<TypeOfEmployee> TypeOfEmployees
+        //{
+        //    get
+        //    {
+        //        if (typeOfEmployeeRepository == null)
+        //        {
+        //            typeOfEmployeeRepository = new TypeOfEmployeeRepository(db);
+        //        }
 
-                return typeOfEmployeeRepository;
-            }
-        }
+        //        return typeOfEmployeeRepository;
+        //    }
+        //}
 
         public IRepository<ContentOfThePlan> ContentOfThePlans
         {
@@ -139,6 +140,19 @@ namespace LoadDistributionForTeachers.DAL.Repositories
                 }
 
                 return contentOfThePlanRepository;
+            }
+        }
+
+        public IRepository<LoadSubgroup> LoadSubgroups
+        {
+            get
+            {
+                if (loadSubgroupRepository == null)
+                {
+                    loadSubgroupRepository = new LoadSubgroupRepository(db);
+                }
+
+                return loadSubgroupRepository;
             }
         }
 

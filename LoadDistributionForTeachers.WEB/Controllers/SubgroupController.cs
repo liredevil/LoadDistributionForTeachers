@@ -52,7 +52,7 @@ namespace LoadDistributionForTeachers.WEB.Controllers
 
                     subgroupService.CreateSubgroup(subgroupDTO);
 
-                    TempData["message"] = string.Format("Subgroup successful added");
+                    TempData["message"] = string.Format("Подгруппа была добавлена");
 
                     return RedirectToAction("index");
                 }
@@ -71,7 +71,7 @@ namespace LoadDistributionForTeachers.WEB.Controllers
             {
                 subgroupService.DeleteSubgroup(id);
 
-                TempData["message"] = string.Format("Subgroup successful deleted");
+                TempData["message"] = string.Format("Подгруппа была удалена");
 
                 return RedirectToAction("index");
             }

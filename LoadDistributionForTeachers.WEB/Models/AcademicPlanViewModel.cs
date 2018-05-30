@@ -12,9 +12,11 @@ namespace LoadDistributionForTeachers.WEB.Models
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "Код группы")]
         public int GroupCode { get; set; }
 
         [Required]
+        [Display(Name = "Имя специальности")]
         public string NameOfSpecialty { get; set; }
     }
 }

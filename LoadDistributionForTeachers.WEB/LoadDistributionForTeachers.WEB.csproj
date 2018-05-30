@@ -193,6 +193,7 @@
     <Compile Include="Controllers\DisciplineController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoadSubgroupController.cs" />
     <Compile Include="Controllers\SubgroupController.cs" />
     <Compile Include="Controllers\TypeOfEmployeeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -205,6 +206,7 @@
     <Compile Include="Models\DisciplineViewModel.cs" />
     <Compile Include="Models\EmployeeCreateModel.cs" />
     <Compile Include="Models\EmployeeViewModel.cs" />
+    <Compile Include="Models\LoadSubgroupViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\SubgroupViewModel.cs" />
@@ -244,7 +246,9 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -279,6 +283,8 @@
     <Content Include="Views\TypeOfEmployee\CreateTypeOfEmployee.cshtml" />
     <Content Include="Views\ContentOfThePlan\Index.cshtml" />
     <Content Include="Views\ContentOfThePlan\CreateContentOfThePlane.cshtml" />
+    <Content Include="Views\LoadSubgroup\CreateLoad.cshtml" />
+    <Content Include="Views\LoadSubgroup\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

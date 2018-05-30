@@ -12,16 +12,23 @@ namespace LoadDistributionForTeachers.WEB.Models
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "Имя")]
         public string FirstName { get; set; }
 
         [Required]
+        [Display(Name = "Фамилия")]
         public string LastName { get; set; }
 
         [Required]
+        [Display(Name = "Отчество")]
         public string Patronymic { get; set; }
 
+        [Required]
+        [Display(Name = "Ученые степени")]
         public string AcademicDegreeTitle { get; set; }
 
+        [Required]
+        [Display(Name = "Ученые звания")]
         public string AcademicTitleName { get; set; }
     }
 }

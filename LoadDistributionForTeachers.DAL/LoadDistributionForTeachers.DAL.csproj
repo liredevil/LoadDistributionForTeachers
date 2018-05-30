@@ -63,6 +63,7 @@
     <Compile Include="Entities\ContentOfThePlan.cs" />
     <Compile Include="Entities\Discipline.cs" />
     <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Entities\LoadSubgroup.cs" />
     <Compile Include="Entities\Subgroup.cs" />
     <Compile Include="Entities\TypeOfEmployee.cs" />
     <Compile Include="Identity\ApplicationRoleManager.cs" />
@@ -70,21 +71,13 @@
     <Compile Include="Interfaces\IClientManager.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Migrations\201804252312228_SampleMigrations.cs" />
-    <Compile Include="Migrations\201804252312228_SampleMigrations.Designer.cs">
-      <DependentUpon>201804252312228_SampleMigrations.cs</DependentUpon>
+    <Compile Include="Migrations\201805301546578_SampleMigrations.cs" />
+    <Compile Include="Migrations\201805301546578_SampleMigrations.Designer.cs">
+      <DependentUpon>201805301546578_SampleMigrations.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804271050366_SampleMigrations1.cs" />
-    <Compile Include="Migrations\201804271050366_SampleMigrations1.Designer.cs">
-      <DependentUpon>201804271050366_SampleMigrations1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804271328302_SampleMigrations2.cs" />
-    <Compile Include="Migrations\201804271328302_SampleMigrations2.Designer.cs">
-      <DependentUpon>201804271328302_SampleMigrations2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805021338224_SampleMigrations3.cs" />
-    <Compile Include="Migrations\201805021338224_SampleMigrations3.Designer.cs">
-      <DependentUpon>201805021338224_SampleMigrations3.cs</DependentUpon>
+    <Compile Include="Migrations\201805301640376_SampleMigrations1.cs" />
+    <Compile Include="Migrations\201805301640376_SampleMigrations1.Designer.cs">
+      <DependentUpon>201805301640376_SampleMigrations1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,6 +89,7 @@
     <Compile Include="Repositories\DisciplineRepository.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Repositories\IdentityUnitOfWork.cs" />
+    <Compile Include="Repositories\LoadSubgroupRepository.cs" />
     <Compile Include="Repositories\SubgroupRepository.cs" />
     <Compile Include="Repositories\TypeOfEmployeeRepository.cs" />
   </ItemGroup>
@@ -104,17 +98,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804252312228_SampleMigrations.resx">
-      <DependentUpon>201804252312228_SampleMigrations.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805301546578_SampleMigrations.resx">
+      <DependentUpon>201805301546578_SampleMigrations.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804271050366_SampleMigrations1.resx">
-      <DependentUpon>201804271050366_SampleMigrations1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804271328302_SampleMigrations2.resx">
-      <DependentUpon>201804271328302_SampleMigrations2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805021338224_SampleMigrations3.resx">
-      <DependentUpon>201805021338224_SampleMigrations3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805301640376_SampleMigrations1.resx">
+      <DependentUpon>201805301640376_SampleMigrations1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

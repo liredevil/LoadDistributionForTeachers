@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Список дисциплин</h2>
 <p>
     <div class="btn-group">
-        @Html.ActionLink("Create Discipline", "CreateDiscipline", "Discipline", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Добавить дисциплину", "CreateDiscipline", "Discipline", null, new { @class = "btn btn-primary" })
     </div>
 </p>
 
@@ -27,7 +27,7 @@
         <td>
             @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
-            @Html.ActionLink("Delete", "DeleteDiscipline", new { id = item.Id })
+            @Html.ActionLink("Удалить", "DeleteDiscipline", new { id = item.Id })
         </td>
     </tr>
 }

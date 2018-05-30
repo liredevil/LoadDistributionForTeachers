@@ -4,14 +4,13 @@
     ViewBag.Title = "CreateContentOfThePlane";
 }
 
-<h2>CreateContentOfThePlane</h2>
+<h2>Добавление информации об учебном плане</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>ContentOfThePlanViewModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -49,15 +48,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.GroupCode, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("AcademicPlans", ViewBag.AcademicDegrees as SelectList, "", new { @class = "form-control" })
+                @Html.DropDownList("AcademicPlans", ViewBag.AcademicPlans as SelectList, "", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.GroupCode, "", new { @class = "text-danger" })
-            </div>
+            </div>@*исправить тут нужно*@
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.DisciplineTitle, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Disciplines", ViewBag.AcademicDegrees as SelectList, "", new { @class = "form-control" })
+                @Html.DropDownList("Disciplines", ViewBag.Disciplines as SelectList, "", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DisciplineTitle, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -71,5 +70,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться к списку", "Index")
 </div>

@@ -4,11 +4,11 @@
     ViewBag.Title = "Index";
 }
 
-<h2>List Academic Degrees</h2>
+<h2>Список ученых степеней</h2>
 
 <p>
     <div class="btn-group">
-        @Html.ActionLink("Create AcademicDegree", "CreateAcademicDegree", "AcademicDegree", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Добавить ученую степень", "CreateAcademicDegree", "AcademicDegree", null, new { @class = "btn btn-primary" })
     </div>
 </p>
 <table class="table">
@@ -27,7 +27,7 @@
         <td>
             @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
-            @Html.ActionLink("Delete", "DeleteAcademicDegree", new { id=item.Id })
+            @Html.ActionLink("Удалить", "DeleteAcademicDegree", new { id=item.Id })
         </td>
     </tr>
 }

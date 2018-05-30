@@ -27,5 +27,7 @@ namespace LoadDistributionForTeachers.DAL.Entities
         public int AcademicTitleId { get; set; }
 
         public AcademicTitle AcademicTitle { get; set; }
+
+        public ICollection<LoadSubgroup> LoadSubgroups { get; set; }
     }
 }

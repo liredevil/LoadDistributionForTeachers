@@ -16,8 +16,9 @@ namespace LoadDistributionForTeachers.DAL.Interfaces
         IRepository<Discipline> Disciplines { get; }
         IRepository<AcademicPlan> AcademicPlans { get; }
         IRepository<Subgroup> Subgroups { get; }
-        IRepository<TypeOfEmployee> TypeOfEmployees { get; }
+        //IRepository<TypeOfEmployee> TypeOfEmployees { get; }
         IRepository<ContentOfThePlan> ContentOfThePlans { get; }
+        IRepository<LoadSubgroup> LoadSubgroups { get; }
         Task SaveAsync();
         void Save();
     }

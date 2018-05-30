@@ -32,5 +32,7 @@ namespace LoadDistributionForTeachers.DAL.Entities
         public int DisciplineId { get; set; }
         public Discipline Discipline { get; set; }
 
+        public ICollection<LoadSubgroup> LoadSubgroups { get; set; }
+
     }
 }

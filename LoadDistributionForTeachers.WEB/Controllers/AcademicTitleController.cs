@@ -51,7 +51,7 @@ namespace LoadDistributionForTeachers.WEB.Controllers
 
                     academicTitleService.CreateAcademicTitle(academicTitleDTO);
 
-                    TempData["message"] = string.Format("Academic Title successful added");
+                    TempData["message"] = string.Format("Ученая степень была добавлена");
 
                     return RedirectToAction("index");
                 }
@@ -70,7 +70,7 @@ namespace LoadDistributionForTeachers.WEB.Controllers
             {
                 academicTitleService.DeleteAcademicTitle(id);
 
-                TempData["message"] = string.Format("Academic Title successful deleted");
+                TempData["message"] = string.Format("Ученая степень была удалена");
 
                 return RedirectToAction("index");
             }

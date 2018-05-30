@@ -52,7 +52,7 @@ namespace LoadDistributionForTeachers.WEB.Controllers
 
                     academicPlanService.CreateAcademicPlan(academicPlanDTO);
 
-                    TempData["message"] = string.Format("Academic Plan successful added");
+                    TempData["message"] = string.Format("Учебный план был добавлен");
 
                     return RedirectToAction("index");
                 }
@@ -71,7 +71,7 @@ namespace LoadDistributionForTeachers.WEB.Controllers
             {
                 academicPlanService.DeleteAcademicPlan(id);
 
-                TempData["message"] = string.Format("Academic Plan successful deleted");
+                TempData["message"] = string.Format("Учебный план был удален");
 
                 return RedirectToAction("index");
             }

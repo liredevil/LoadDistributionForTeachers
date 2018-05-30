@@ -4,14 +4,13 @@
     ViewBag.Title = "CreateSubgroup";
 }
 
-<h2>CreateSubgroup</h2>
+<h2>Добавление подгруппы</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>SubgroupViewModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -39,5 +38,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("вернуться к списку", "Index")
 </div>

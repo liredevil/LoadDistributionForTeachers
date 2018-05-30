@@ -75,7 +75,7 @@ namespace LoadDistributionForTeachers.WEB.Controllers
 
                     employeeService.CreateEmployee(employeeDTO);
 
-                    TempData["message"] = string.Format("employee successful added");
+                    TempData["message"] = string.Format("Сотрудник был добавлен");
 
                     return RedirectToAction("index");
                 }
@@ -94,7 +94,7 @@ namespace LoadDistributionForTeachers.WEB.Controllers
             {
                 employeeService.DeleteEmployee(id);
 
-                TempData["message"] = string.Format("employee successful deleted");
+                TempData["message"] = string.Format("Сотрудник был удален");
 
                 return RedirectToAction("index");
             }
