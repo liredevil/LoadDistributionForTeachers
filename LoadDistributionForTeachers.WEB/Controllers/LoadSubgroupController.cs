@@ -102,6 +102,71 @@ namespace LoadDistributionForTeachers.WEB.Controllers
             return View(loadViewModel);
         }
 
+        [HttpGet]
+        public ActionResult CountLoad()
+        {
+            IEnumerable<LoadSubgroupDTO> loadDTOs = loadService.GetLoads();
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<LoadSubgroupDTO, LoadSubgroupViewModel>())
+            .CreateMapper();
+
+            var loads = mapper.Map<IEnumerable<LoadSubgroupDTO>, List<LoadSubgroupViewModel>>(loadDTOs);
+
+
+            List<LoadSubgroupViewModel> getList = new List<LoadSubgroupViewModel>();
+            foreach(var item in loads)
+            {
+                getList.Add(new LoadSubgroupViewModel
+                {
+                    Name = item.Name,
+                    NumberOfHoursOfLectures = item.NumberOfHoursOfLectures,
+                    NumberOfHoursOfPractice = item.NumberOfHoursOfPractice
+                });
+            }
+            int a = 0, b = 0;
+            List<LoadSubgroupViewModel> newGetList = new List<LoadSubgroupViewModel>();
+            int count = newGetList.Count();///счетчик
+            int flag = 0;
+            for (int i = 0; i < getList.Count; i++)
+            {
+                a = getList[i].NumberOfHoursOfLectures;
+                b = getList[i].NumberOfHoursOfPractice;
+                for (int j = i + 1; j < getList.Count; j++)
+                {
+                    if(getList[i].Name == getList[j].Name)
+                    {
+                        a += getList[j].NumberOfHoursOfLectures;
+                        b += getList[j].NumberOfHoursOfPractice;
+                    }
+                }
+
+                for(int i1 = 0; i1< newGetList.Count;i1++)
+                {
+                    if(newGetList[i1].Name == getList[i].Name)
+                    {
+                        flag = 1;
+                    }
+                }
+                if(flag != 1)
+                {
+                    newGetList.Add(new LoadSubgroupViewModel
+                    {
+                        Name = getList[i].Name,
+                        NumberOfHoursOfLectures = a,
+                        NumberOfHoursOfPractice = b
+                    });
+                }
+                
+                a = 0;
+                b = 0;
+                flag = 0;
+            }
+
+
+
+            return View(newGetList);
+
+        }
+
         public ActionResult DeleteLoad(int id)
         {
             try

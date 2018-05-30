@@ -285,6 +285,7 @@
     <Content Include="Views\ContentOfThePlan\CreateContentOfThePlane.cshtml" />
     <Content Include="Views\LoadSubgroup\CreateLoad.cshtml" />
     <Content Include="Views\LoadSubgroup\Index.cshtml" />
+    <Content Include="Views\LoadSubgroup\CountLoad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

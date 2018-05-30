@@ -1,0 +1,40 @@
+﻿@model IEnumerable<LoadDistributionForTeachers.WEB.Models.LoadSubgroupViewModel>
+
+@{
+    ViewBag.Title = "CountLoad";
+}
+
+<h2>CountLoad</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfHoursOfLectures)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfHoursOfPractice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfHoursOfLectures)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfHoursOfPractice)
+        </td>
+    </tr>
+}
+
+</table>
