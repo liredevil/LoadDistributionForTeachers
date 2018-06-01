@@ -19,11 +19,17 @@
         <th>
             @Html.DisplayNameFor(model => model.DisciplineName)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.NumberOfHoursOfLectures)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.NumberOfHoursOfPractice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfHoursOfOffset)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfHoursOfExamination)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.GroupNumber)
@@ -39,17 +45,23 @@
         <td>
             @Html.DisplayFor(modelItem => item.DisciplineName)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.NumberOfHoursOfLectures)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.NumberOfHoursOfPractice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfHoursOfOffset)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfHoursOfExamination)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.GroupNumber)
         </td>
         <td>
-            @Html.ActionLink("Удалить", "DeleteLoad", new { id=item.Id })
+            @Html.ActionLink("Удалить", "DeleteLoad", new { id = item.Id })
         </td>
     </tr>
 }

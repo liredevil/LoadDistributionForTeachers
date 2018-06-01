@@ -10,6 +10,7 @@ namespace LoadDistributionForTeachers.DAL.Interfaces
     {
         void Create(T item);
         void Delete(int id);
+        void Update(T item);
         IEnumerable<T> GetAll();
         T Get(int id);
         

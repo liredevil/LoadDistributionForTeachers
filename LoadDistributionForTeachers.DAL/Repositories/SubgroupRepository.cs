@@ -42,5 +42,10 @@ namespace LoadDistributionForTeachers.DAL.Repositories
         {
             return db.Subgroups;
         }
+
+        public void Update(Subgroup item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

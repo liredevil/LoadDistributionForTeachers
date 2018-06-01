@@ -6,37 +6,37 @@
     <div class="col-md-4">
         @*<h2>Employee</h2>*@
         <p>
-            @Html.ActionLink("Работа с сотрудниками", "Index", "Employee", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Сотрудники", "Index", "Employee", null, new { @class = "btn btn-default" })
         </p>
     </div>
     <div class="col-md-4">
         @*<h2>AcademicDegree</h2>*@
         <p>
-            @Html.ActionLink("Работа с учеными степенями", "Index", "AcademicDegree", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Ученые степени", "Index", "AcademicDegree", null, new { @class = "btn btn-default" })
         </p>
     </div>
     <div class="col-md-4">
         @*<h2>AcademicTitle</h2>*@
         <p>
-            @Html.ActionLink("Работа с учеными званиями", "Index", "AcademicTitle", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Учебные звания", "Index", "AcademicTitle", null, new { @class = "btn btn-default" })
         </p>
     </div>
     <div class="col-md-4">
         @*<h2>Discipline</h2>*@
         <p>
-            @Html.ActionLink("Работа с дисциплинами", "Index", "Discipline", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Дисциплина", "Index", "Discipline", null, new { @class = "btn btn-default" })
         </p>
     </div>
     <div class="col-md-4">
         @*<h2>Academic Plan</h2>*@
         <p>
-            @Html.ActionLink("Работа с учебным планом", "Index", "AcademicPlan", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Учебный план", "Index", "AcademicPlan", null, new { @class = "btn btn-default" })
         </p>
     </div>
     <div class="col-md-4">
         @*<h2>Subgroup</h2>*@
         <p>
-            @Html.ActionLink("Работа с подгруппами", "Index", "Subgroup", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Подгруппы", "Index", "Subgroup", null, new { @class = "btn btn-default" })
         </p>
     </div>
     @*<div class="col-md-4">
@@ -54,7 +54,13 @@
     <div class="col-md-4">
         @*<h2>ContentOfThePlan</h2>*@
         <p>
-            @Html.ActionLink("Работа с нагрузкой на подгруппы", "Index", "LoadSubgroup", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Нагрузкой на подгруппы", "Index", "LoadSubgroup", null, new { @class = "btn btn-default" })
+        </p>
+    </div>
+    <div class="col-md-4">
+        @*<h2>ContentOfThePlan</h2>*@
+        <p>
+            @Html.ActionLink("Подсчитать групповую нагрузку нагрузку", "CountLoad", "LoadSubgroup", null, new { @class = "btn btn-default" })
         </p>
     </div>
 </div>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,11 @@ namespace LoadDistributionForTeachers.DAL.Repositories
             {
                 db.ContentOfThePlans.Remove(contentOfThePlan);
             }
+        }
+
+        public void Update(ContentOfThePlan contentOfThePlan)
+        {
+            db.Entry(contentOfThePlan).State = EntityState.Modified;
         }
 
         public ContentOfThePlan Get(int id)

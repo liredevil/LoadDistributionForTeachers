@@ -18,6 +18,10 @@ namespace LoadDistributionForTeachers.DAL.Entities
         [Required]
         public int GroupNumber { get; set; }
 
+        //public int LectureFlowId { get; set; }
+        //public LectureFlow LectureFlow { get; set; }
+
+
         public ICollection<LoadSubgroup> LoadSubgroups { get; set; }
     }
 }

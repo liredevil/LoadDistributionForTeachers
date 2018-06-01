@@ -63,6 +63,7 @@
     <Compile Include="Entities\ContentOfThePlan.cs" />
     <Compile Include="Entities\Discipline.cs" />
     <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Entities\LectureFlow.cs" />
     <Compile Include="Entities\LoadSubgroup.cs" />
     <Compile Include="Entities\Subgroup.cs" />
     <Compile Include="Entities\TypeOfEmployee.cs" />

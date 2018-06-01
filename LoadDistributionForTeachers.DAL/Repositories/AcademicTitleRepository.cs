@@ -42,5 +42,10 @@ namespace LoadDistributionForTeachers.DAL.Repositories
         {
             return db.AcademicTitles;
         }
+
+        public void Update(AcademicTitle item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

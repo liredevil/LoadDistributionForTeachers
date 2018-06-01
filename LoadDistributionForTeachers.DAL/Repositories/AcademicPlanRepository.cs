@@ -42,5 +42,10 @@ namespace LoadDistributionForTeachers.DAL.Repositories
         {
             return db.AcademicPlans;
         }
+
+        public void Update(AcademicPlan item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

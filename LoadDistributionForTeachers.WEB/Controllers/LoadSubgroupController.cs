@@ -118,23 +118,25 @@ namespace LoadDistributionForTeachers.WEB.Controllers
                 getList.Add(new LoadSubgroupViewModel
                 {
                     Name = item.Name,
-                    NumberOfHoursOfLectures = item.NumberOfHoursOfLectures,
-                    NumberOfHoursOfPractice = item.NumberOfHoursOfPractice
+                    //NumberOfHoursOfLectures = item.NumberOfHoursOfLectures,
+                    NumberOfHoursOfPractice = item.NumberOfHoursOfPractice,
+                    //Reporting = contentOfThePlanService.GetContentOfThePlan(item.ContentOfThePlanId).Reporting
                 });
             }
-            int a = 0, b = 0;
+            //int a = 0;
+            int b = 0;
             List<LoadSubgroupViewModel> newGetList = new List<LoadSubgroupViewModel>();
             int count = newGetList.Count();///счетчик
             int flag = 0;
             for (int i = 0; i < getList.Count; i++)
             {
-                a = getList[i].NumberOfHoursOfLectures;
+                //a = getList[i].NumberOfHoursOfLectures;
                 b = getList[i].NumberOfHoursOfPractice;
                 for (int j = i + 1; j < getList.Count; j++)
                 {
                     if(getList[i].Name == getList[j].Name)
                     {
-                        a += getList[j].NumberOfHoursOfLectures;
+                        //a += getList[j].NumberOfHoursOfLectures;
                         b += getList[j].NumberOfHoursOfPractice;
                     }
                 }
@@ -151,12 +153,12 @@ namespace LoadDistributionForTeachers.WEB.Controllers
                     newGetList.Add(new LoadSubgroupViewModel
                     {
                         Name = getList[i].Name,
-                        NumberOfHoursOfLectures = a,
+                        //NumberOfHoursOfLectures = a,
                         NumberOfHoursOfPractice = b
                     });
                 }
                 
-                a = 0;
+                //a = 0;
                 b = 0;
                 flag = 0;
             }
@@ -188,15 +190,13 @@ namespace LoadDistributionForTeachers.WEB.Controllers
         public JsonResult GetRegions(int Id)
         {
             IEnumerable<ContentOfThePlanDTO> contentOfThePlanDTOs = contentOfThePlanService.GetContentOfThePlans();
-            var a = contentOfThePlanDTOs.Where(c => c.Id == Id).ToList().Select(x => new
-            {
-                Name = x.DisciplineTitle
-            }).ToList();
+
             return Json(contentOfThePlanDTOs.Where(c => c.Id == Id).ToList().Select(x => new
             {
                 Name = x.DisciplineTitle,
                 NumberOfHoursOfLectures = x.NumberOfHoursOfLectures,
-                NumberOfHoursOfPractice = x.NumberOfHoursOfPractice
+                NumberOfHoursOfPractice = x.NumberOfHoursOfPractice,
+                Reporting = x.Reporting
 
             }).ToList());
             //return Json(db.Regiones.Where(r => r.CountryId == Id).Select(x => new

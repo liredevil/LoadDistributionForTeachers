@@ -33,7 +33,14 @@ namespace LoadDistributionForTeachers.BLL.Services
                 SubgroupId = loadDTO.SubgroupId
             };
 
+            //ContentOfThePlan contentOfThePlan = Database.ContentOfThePlans.Get(loadDTO.ContentOfThePlanId);
+            //if(contentOfThePlan.Reporting == "Зачет")
+            //{
+            //    contentOfThePlan.NumberOfHoursOfPractice += 2;
+            //}
+            
             Database.LoadSubgroups.Create(loadSubgroup);
+            //Database.ContentOfThePlans.Update(contentOfThePlan);
             Database.Save();
         }
 
@@ -50,17 +57,36 @@ namespace LoadDistributionForTeachers.BLL.Services
 
             foreach (LoadSubgroup item in getListLoad)
             {
+                ContentOfThePlan contentOfThePlan = Database.ContentOfThePlans.Get(item.ContentOfThePlanId);
+                Subgroup subgroup = Database.Subgroups.Get(item.SubgroupId);
+                int hourСredit = 0;
+                int houreExam = 0;
+                if (contentOfThePlan.Reporting == "Зачет")
+                {
+                    //contentOfThePlan.NumberOfHoursOfPractice += 2;
+                    hourСredit += 2;
+                }
+                else
+                {
+                    //contentOfThePlan.NumberOfHoursOfPractice += (20 * subgroup.NumberOfStudents)/60 ;
+                    houreExam += (20 * subgroup.NumberOfStudents) / 60;
+                }
+
                 getListLoadDTOs.Add(new LoadSubgroupDTO
                 {
                     Id = item.Id,
                     Name = Database.Employees.Get(item.EmployeeId).LastName + " " + Database.Employees.Get(item.EmployeeId).Patronymic,
                     GroupNumber = Database.Subgroups.Get(item.SubgroupId).GroupNumber,
-                    NumberOfHoursOfLectures = Database.ContentOfThePlans.Get(item.ContentOfThePlanId).NumberOfHoursOfLectures,
-                    NumberOfHoursOfPractice = Database.ContentOfThePlans.Get(item.ContentOfThePlanId).NumberOfHoursOfPractice,
+                    //NumberOfStudents = Database.Subgroups.Get(item.SubgroupId).NumberOfStudents,
+                    //NumberOfHoursOfLectures = Database.ContentOfThePlans.Get(item.ContentOfThePlanId).NumberOfHoursOfLectures,
+                    NumberOfHoursOfPractice = contentOfThePlan.NumberOfHoursOfPractice, /*Database.ContentOfThePlans.Get(item.ContentOfThePlanId).NumberOfHoursOfPractice,*/
+                    NumberOfHoursOfOffset = hourСredit,
+                    NumberOfHoursOfExamination = houreExam,
+                    //Reporting = Database.ContentOfThePlans.Get(item.ContentOfThePlanId).Reporting,
 
                     DisciplineId = Database.ContentOfThePlans.Get(item.ContentOfThePlanId).DisciplineId,
-                    DisciplineName = Database.Disciplines.Get(item.ContentOfThePlanId).Name
-                    
+                    DisciplineName = Database.Disciplines.Get(Database.ContentOfThePlans.Get(item.ContentOfThePlanId).DisciplineId).Name,
+                    //DisciplineName = Database.ContentOfThePlans.Get(item.ContentOfThePlanId)
                 });
             }
 
@@ -86,8 +112,9 @@ namespace LoadDistributionForTeachers.BLL.Services
                 Id = load.Id,
                 Name = Database.Employees.Get(load.EmployeeId).LastName + Database.Employees.Get(load.EmployeeId).Patronymic,
                 GroupNumber = Database.Subgroups.Get(load.SubgroupId).GroupNumber,
-                NumberOfHoursOfLectures = Database.ContentOfThePlans.Get(load.ContentOfThePlanId).NumberOfHoursOfLectures,
+                //NumberOfHoursOfLectures = Database.ContentOfThePlans.Get(load.ContentOfThePlanId).NumberOfHoursOfLectures,
                 NumberOfHoursOfPractice = Database.ContentOfThePlans.Get(load.ContentOfThePlanId).NumberOfHoursOfPractice,
+                Reporting = Database.ContentOfThePlans.Get(load.ContentOfThePlanId).Reporting,
 
                 DisciplineId = Database.ContentOfThePlans.Get(load.ContentOfThePlanId).DisciplineId,
                 DisciplineName = Database.ContentOfThePlans.Get(load.ContentOfThePlanId).Discipline.Name

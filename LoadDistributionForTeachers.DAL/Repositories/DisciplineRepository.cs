@@ -42,5 +42,10 @@ namespace LoadDistributionForTeachers.DAL.Repositories
         {
             return db.Disciplines;
         }
+
+        public void Update(Discipline item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

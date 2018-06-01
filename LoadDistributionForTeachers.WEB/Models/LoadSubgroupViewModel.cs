@@ -15,16 +15,25 @@ namespace LoadDistributionForTeachers.WEB.Models
         public string Name { get; set; }
 
 
+
         public int DisciplineId { get; set; }
         [Display(Name = "Название предмета")]
         public string DisciplineName { get; set; }
 
 
+
         public int ContentOfThePlanId { get; set; }
+
         [Display(Name = "Количество часов лекций")]
         public int NumberOfHoursOfLectures { get; set; }
+
         [Display(Name = "Количество часов практики")]
         public int NumberOfHoursOfPractice { get; set; }
+        public string Reporting { get; set; }
+        [Display(Name = "Часы зачет")]
+        public int NumberOfHoursOfOffset { get; set; }///кол часов зачета
+        [Display(Name = "Часы Экзамен")]
+        public int NumberOfHoursOfExamination { get; set; }///кол часов экзамена
 
 
         public int SubgroupId { get; set; }
