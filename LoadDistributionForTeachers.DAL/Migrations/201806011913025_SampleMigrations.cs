@@ -43,24 +43,21 @@ namespace LoadDistributionForTeachers.DAL.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.LoadSubgroups",
+                "dbo.LoadFlows",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         EmployeeId = c.Int(nullable: false),
                         ContentOfThePlanId = c.Int(nullable: false),
-                        SubgroupId = c.Int(nullable: false),
-                        TypeOfEmployee_Id = c.Int(),
+                        LectureFlowId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.ContentOfThePlans", t => t.ContentOfThePlanId, cascadeDelete: true)
+                .ForeignKey("dbo.LectureFlows", t => t.LectureFlowId, cascadeDelete: true)
                 .ForeignKey("dbo.Employees", t => t.EmployeeId, cascadeDelete: true)
-                .ForeignKey("dbo.Subgroups", t => t.SubgroupId, cascadeDelete: true)
-                .ForeignKey("dbo.TypeOfEmployees", t => t.TypeOfEmployee_Id)
                 .Index(t => t.EmployeeId)
                 .Index(t => t.ContentOfThePlanId)
-                .Index(t => t.SubgroupId)
-                .Index(t => t.TypeOfEmployee_Id);
+                .Index(t => t.LectureFlowId);
             
             CreateTable(
                 "dbo.ContentOfThePlans",
@@ -100,12 +97,41 @@ namespace LoadDistributionForTeachers.DAL.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.LoadSubgroups",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        EmployeeId = c.Int(nullable: false),
+                        ContentOfThePlanId = c.Int(nullable: false),
+                        SubgroupId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.ContentOfThePlans", t => t.ContentOfThePlanId, cascadeDelete: true)
+                .ForeignKey("dbo.Employees", t => t.EmployeeId, cascadeDelete: true)
+                .ForeignKey("dbo.Subgroups", t => t.SubgroupId, cascadeDelete: true)
+                .Index(t => t.EmployeeId)
+                .Index(t => t.ContentOfThePlanId)
+                .Index(t => t.SubgroupId);
+            
+            CreateTable(
                 "dbo.Subgroups",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         NumberOfStudents = c.Int(nullable: false),
                         GroupNumber = c.Int(nullable: false),
+                        LectureFlowId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.LectureFlows", t => t.LectureFlowId, cascadeDelete: true)
+                .Index(t => t.LectureFlowId);
+            
+            CreateTable(
+                "dbo.LectureFlows",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Title = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -190,28 +216,22 @@ namespace LoadDistributionForTeachers.DAL.Migrations
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
             
-            CreateTable(
-                "dbo.TypeOfEmployees",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Title = c.String(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.LoadSubgroups", "TypeOfEmployee_Id", "dbo.TypeOfEmployees");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.ClientProfiles", "Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.LoadFlows", "EmployeeId", "dbo.Employees");
             DropForeignKey("dbo.LoadSubgroups", "SubgroupId", "dbo.Subgroups");
+            DropForeignKey("dbo.Subgroups", "LectureFlowId", "dbo.LectureFlows");
+            DropForeignKey("dbo.LoadFlows", "LectureFlowId", "dbo.LectureFlows");
             DropForeignKey("dbo.LoadSubgroups", "EmployeeId", "dbo.Employees");
             DropForeignKey("dbo.LoadSubgroups", "ContentOfThePlanId", "dbo.ContentOfThePlans");
+            DropForeignKey("dbo.LoadFlows", "ContentOfThePlanId", "dbo.ContentOfThePlans");
             DropForeignKey("dbo.ContentOfThePlans", "DisciplineId", "dbo.Disciplines");
             DropForeignKey("dbo.ContentOfThePlans", "AcademicPlanId", "dbo.AcademicPlans");
             DropForeignKey("dbo.Employees", "AcademicTitleId", "dbo.AcademicTitles");
@@ -223,26 +243,30 @@ namespace LoadDistributionForTeachers.DAL.Migrations
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.ClientProfiles", new[] { "Id" });
-            DropIndex("dbo.ContentOfThePlans", new[] { "DisciplineId" });
-            DropIndex("dbo.ContentOfThePlans", new[] { "AcademicPlanId" });
-            DropIndex("dbo.LoadSubgroups", new[] { "TypeOfEmployee_Id" });
+            DropIndex("dbo.Subgroups", new[] { "LectureFlowId" });
             DropIndex("dbo.LoadSubgroups", new[] { "SubgroupId" });
             DropIndex("dbo.LoadSubgroups", new[] { "ContentOfThePlanId" });
             DropIndex("dbo.LoadSubgroups", new[] { "EmployeeId" });
+            DropIndex("dbo.ContentOfThePlans", new[] { "DisciplineId" });
+            DropIndex("dbo.ContentOfThePlans", new[] { "AcademicPlanId" });
+            DropIndex("dbo.LoadFlows", new[] { "LectureFlowId" });
+            DropIndex("dbo.LoadFlows", new[] { "ContentOfThePlanId" });
+            DropIndex("dbo.LoadFlows", new[] { "EmployeeId" });
             DropIndex("dbo.Employees", new[] { "AcademicTitleId" });
             DropIndex("dbo.Employees", new[] { "AcademicDegreeId" });
-            DropTable("dbo.TypeOfEmployees");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.ClientProfiles");
+            DropTable("dbo.LectureFlows");
             DropTable("dbo.Subgroups");
+            DropTable("dbo.LoadSubgroups");
             DropTable("dbo.Disciplines");
             DropTable("dbo.AcademicPlans");
             DropTable("dbo.ContentOfThePlans");
-            DropTable("dbo.LoadSubgroups");
+            DropTable("dbo.LoadFlows");
             DropTable("dbo.AcademicTitles");
             DropTable("dbo.Employees");
             DropTable("dbo.AcademicDegrees");

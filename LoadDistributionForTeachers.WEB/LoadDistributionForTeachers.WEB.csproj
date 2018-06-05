@@ -193,6 +193,8 @@
     <Compile Include="Controllers\DisciplineController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LectureFlowController.cs" />
+    <Compile Include="Controllers\LoadFlowController.cs" />
     <Compile Include="Controllers\LoadSubgroupController.cs" />
     <Compile Include="Controllers\SubgroupController.cs" />
     <Compile Include="Controllers\TypeOfEmployeeController.cs" />
@@ -206,6 +208,8 @@
     <Compile Include="Models\DisciplineViewModel.cs" />
     <Compile Include="Models\EmployeeCreateModel.cs" />
     <Compile Include="Models\EmployeeViewModel.cs" />
+    <Compile Include="Models\LectureFlowViewModel.cs" />
+    <Compile Include="Models\LoadFlowViewModel.cs" />
     <Compile Include="Models\LoadSubgroupViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
@@ -286,6 +290,11 @@
     <Content Include="Views\LoadSubgroup\CreateLoad.cshtml" />
     <Content Include="Views\LoadSubgroup\Index.cshtml" />
     <Content Include="Views\LoadSubgroup\CountLoad.cshtml" />
+    <Content Include="Views\LectureFlow\Index.cshtml" />
+    <Content Include="Views\LectureFlow\CreateLectureFlow.cshtml" />
+    <Content Include="Views\LoadFlow\CreateLoad.cshtml" />
+    <Content Include="Views\LoadFlow\Index.cshtml" />
+    <Content Include="Views\LoadFlow\CountLoad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,92 @@
+﻿@model LoadDistributionForTeachers.WEB.Models.LoadFlowViewModel
+
+@{
+    ViewBag.Title = "CreateLoad";
+}
+
+<h2>Добавить нагрузку</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Employee", ViewBag.Employees as SelectList, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EmployeeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContentOfThePlanId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ContentOfThePlan", ViewBag.ContentOfThePlans as SelectList, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ContentOfThePlanId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DisciplineName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="disciplineName" readonly>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NumberOfHoursOfLectures, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="numberOfHoursOfLectures" readonly>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Reporting, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="reporting" readonly>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LectureFlowId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("LectureFlow", ViewBag.LectureFlows as SelectList, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LectureFlowId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Добавить" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script type="text/javascript">
+    $('#ContentOfThePlan').change(function () {
+        var id = $(this).val();
+        Change(id);
+    });
+
+    function Change(id) {
+
+        $.ajax({
+            url: '/LoadSubgroup/GetRegions',
+            type: 'POST',
+            data: { Id: id },
+            dataType: 'json',
+            success: function (data) {
+                $("#disciplineName").val((data[0].Name));
+                $("#numberOfHoursOfLectures").val((data[0].NumberOfHoursOfLectures));
+                $("#reporting").val((data[0].Reporting));
+            }
+        });
+    }
+</script>

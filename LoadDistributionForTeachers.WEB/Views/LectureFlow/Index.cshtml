@@ -1,0 +1,33 @@
+﻿@model IEnumerable<LoadDistributionForTeachers.WEB.Models.LectureFlowViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Список потоков</h2>
+
+<p>
+    <div class="btn-group">
+        @Html.ActionLink("Добавить поток", "CreateLectureFlow", "LectureFlow", null, new { @class = "btn btn-primary" })
+    </div>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.ActionLink("Удалить", "DeleteLectureFlow", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

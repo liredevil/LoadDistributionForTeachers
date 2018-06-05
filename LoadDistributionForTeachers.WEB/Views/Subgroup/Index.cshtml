@@ -19,6 +19,12 @@
         <th>
             @Html.DisplayNameFor(model => model.GroupNumber)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GroupNumber2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LectureFlowTitle)
+        </th>
         <th></th>
     </tr>
 
@@ -31,9 +37,15 @@
             @Html.DisplayFor(modelItem => item.GroupNumber)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.GroupNumber2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LectureFlowTitle)
+        </td>
+        <td>
             @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
-            @Html.ActionLink("Удалить", "DeleteSubgroup", new { id=item.Id })
+            @Html.ActionLink("Удалить", "DeleteSubgroup", new { id = item.Id })
         </td>
     </tr>
 }

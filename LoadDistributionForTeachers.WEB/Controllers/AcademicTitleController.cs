@@ -11,7 +11,6 @@ using LoadDistributionForTeachers.BLL.Infrastructure;
 
 namespace LoadDistributionForTeachers.WEB.Controllers
 {
-    [Authorize]
     public class AcademicTitleController : Controller
     {
         IAcademicTitleService academicTitleService;

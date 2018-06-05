@@ -30,7 +30,9 @@ namespace LoadDistributionForTeachers.BLL.Services
             Subgroup subgroup = new Subgroup
             {
                 GroupNumber = subgroupDTO.GroupNumber,
-                NumberOfStudents = subgroupDTO.NumberOfStudents
+                GroupNumber2 = subgroupDTO.GroupNumber2,
+                NumberOfStudents = subgroupDTO.NumberOfStudents,
+                LectureFlowId = subgroupDTO.LectureFlowId
             };
 
             Database.Subgroups.Create(subgroup);
@@ -67,8 +69,22 @@ namespace LoadDistributionForTeachers.BLL.Services
 
         public IEnumerable<SubgroupDTO> GetSubgroups()
         {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Subgroup, SubgroupDTO>()).CreateMapper();
-            return mapper.Map<IEnumerable<Subgroup>, List<SubgroupDTO>>(Database.Subgroups.GetAll());
+            IEnumerable<Subgroup> getListSubgroups = Database.Subgroups.GetAll().ToList();
+            List<SubgroupDTO> getListSubgroupDTOs = new List<SubgroupDTO>();
+
+            foreach (Subgroup item in getListSubgroups)
+            {
+                getListSubgroupDTOs.Add(new SubgroupDTO
+                {
+                    Id = item.Id,
+                    GroupNumber = item.GroupNumber,
+                    GroupNumber2 = item.GroupNumber2,
+                    NumberOfStudents = item.NumberOfStudents,
+                    LectureFlowTitle = Database.LectureFlows.Get(item.LectureFlowId).Title
+                });
+            }
+
+            return getListSubgroupDTOs;
         }
     }
 }

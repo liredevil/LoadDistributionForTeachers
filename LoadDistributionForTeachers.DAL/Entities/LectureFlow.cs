@@ -16,6 +16,6 @@ namespace LoadDistributionForTeachers.DAL.Entities
         public string Title { get; set; }
 
         public ICollection<Subgroup> Subgroups { get; set; }
-
+        public ICollection<LoadFlow> LoadFlows { get; set; }
     }
 }

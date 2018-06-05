@@ -4,63 +4,75 @@
 
 <div class="row">
     <div class="col-md-4">
-        @*<h2>Employee</h2>*@
         <p>
-            @Html.ActionLink("Сотрудники", "Index", "Employee", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Сотрудники", "Index", "Employee", null, new { @class = "btn btn-info" })
         </p>
     </div>
     <div class="col-md-4">
-        @*<h2>AcademicDegree</h2>*@
         <p>
-            @Html.ActionLink("Ученые степени", "Index", "AcademicDegree", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Ученые степени", "Index", "AcademicDegree", null, new { @class = "btn btn-info" })
         </p>
     </div>
     <div class="col-md-4">
-        @*<h2>AcademicTitle</h2>*@
         <p>
-            @Html.ActionLink("Учебные звания", "Index", "AcademicTitle", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Ученые звания", "Index", "AcademicTitle", null, new { @class = "btn btn-info" })
+        </p>
+    </div>
+</div>
+<hr class="style13">
+<div class="row">
+    <div class="col-md-4">
+        <p>
+            @Html.ActionLink("Дисциплина", "Index", "Discipline", null, new { @class = "btn btn-info" })
         </p>
     </div>
     <div class="col-md-4">
-        @*<h2>Discipline</h2>*@
         <p>
-            @Html.ActionLink("Дисциплина", "Index", "Discipline", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Поток", "Index", "LectureFlow", null, new { @class = "btn btn-info" })
         </p>
     </div>
     <div class="col-md-4">
-        @*<h2>Academic Plan</h2>*@
         <p>
-            @Html.ActionLink("Учебный план", "Index", "AcademicPlan", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Подгруппы", "Index", "Subgroup", null, new { @class = "btn btn-info" })
+        </p>
+    </div>
+</div>
+<hr class="style13">
+<div class="row">
+    <div class="col-md-4">
+        <p>
+            @Html.ActionLink("Учебный план", "Index", "AcademicPlan", null, new { @class = "btn btn-info" })
         </p>
     </div>
     <div class="col-md-4">
-        @*<h2>Subgroup</h2>*@
         <p>
-            @Html.ActionLink("Подгруппы", "Index", "Subgroup", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Информация об учебном плане", "Index", "ContentOfThePlan", null, new { @class = "btn btn-info" })
         </p>
     </div>
-    @*<div class="col-md-4">
-            <h2>TypeOfEmployee</h2>
-            <p>
-                @Html.ActionLink("TypeOfEmployee", "Index", "TypeOfEmployee", null, new { @class = "btn btn-default" })
-            </p>
-        </div>*@
+</div>
+<hr class="style13">
+<div class="row">
     <div class="col-md-4">
-        @*<h2>ContentOfThePlan</h2>*@
         <p>
-            @Html.ActionLink("Работа с информацией учебного плана", "Index", "ContentOfThePlan", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Нагрузка на Подгруппу", "Index", "LoadSubgroup", null, new { @class = "btn btn-info" })
         </p>
     </div>
     <div class="col-md-4">
-        @*<h2>ContentOfThePlan</h2>*@
         <p>
-            @Html.ActionLink("Нагрузкой на подгруппы", "Index", "LoadSubgroup", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Лекционная нагрузка", "Index", "LoadFlow", null, new { @class = "btn btn-info" })
+        </p>
+    </div>
+</div>
+<hr class="style13">
+<div class="row">
+    <div class="col-md-4">
+        <p>
+            @Html.ActionLink("Подсчитать групповую нагрузку", "CountLoad", "LoadSubgroup", null, new { @class = "btn btn-info" })
         </p>
     </div>
     <div class="col-md-4">
-        @*<h2>ContentOfThePlan</h2>*@
         <p>
-            @Html.ActionLink("Подсчитать групповую нагрузку нагрузку", "CountLoad", "LoadSubgroup", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Подсчитать лекционную нагрузку", "CountLoad", "LoadFlow", null, new { @class = "btn btn-info" })
         </p>
     </div>
 </div>

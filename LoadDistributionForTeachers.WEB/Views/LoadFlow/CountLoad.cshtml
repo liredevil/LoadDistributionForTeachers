@@ -1,13 +1,14 @@
-﻿@model IEnumerable<LoadDistributionForTeachers.WEB.Models.LoadSubgroupViewModel>
+﻿@model IEnumerable<LoadDistributionForTeachers.WEB.Models.LoadFlowViewModel>
 
 @{
     ViewBag.Title = "CountLoad";
 }
 
-<h2>Суммарная групповая нагрузка</h2>
+<h2>Суммарная лекционная нагрузка</h2>
 
 <table class="table">
     <tr>
+
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -22,11 +23,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.NumberOfHoursOfLectures)
-        </td>*@
         <td>
-            @Html.DisplayFor(modelItem => item.NumberOfHoursOfPractice)
+            @Html.DisplayFor(modelItem => item.NumberOfHoursOfLectures)
+        </td>
+        
+        <td>
         </td>
     </tr>
 }

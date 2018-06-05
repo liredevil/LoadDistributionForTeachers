@@ -9,7 +9,6 @@ namespace LoadDistributionForTeachers.BLL.DTO
 {
     public class AcademicDegreeDTO
     {
-
         public int Id { get; set; }
         public string Title { get; set; }
 

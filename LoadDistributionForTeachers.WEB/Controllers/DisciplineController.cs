@@ -11,7 +11,6 @@ using LoadDistributionForTeachers.WEB.Models;
 
 namespace LoadDistributionForTeachers.WEB.Controllers
 {
-    [Authorize]
     public class DisciplineController : Controller
     {
         IDisciplineService disciplineService;

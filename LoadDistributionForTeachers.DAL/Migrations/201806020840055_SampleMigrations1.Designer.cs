@@ -7,13 +7,13 @@ namespace LoadDistributionForTeachers.DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class SampleMigrations : IMigrationMetadata
+    public sealed partial class SampleMigrations1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SampleMigrations));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SampleMigrations1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201805301546578_SampleMigrations"; }
+            get { return "201806020840055_SampleMigrations1"; }
         }
         
         string IMigrationMetadata.Source

@@ -16,12 +16,12 @@ namespace LoadDistributionForTeachers.DAL.Entities
         public int NumberOfStudents { get; set; }
 
         [Required]
-        public int GroupNumber { get; set; }
+        public int GroupNumber { get; set; }///номер подгруппы
 
-        //public int LectureFlowId { get; set; }
-        //public LectureFlow LectureFlow { get; set; }
+        [Required]
+        public int GroupNumber2 { get; set; }///номер группы
 
-
-        public ICollection<LoadSubgroup> LoadSubgroups { get; set; }
+        public int LectureFlowId { get; set; }
+        public LectureFlow LectureFlow { get; set; }
     }
 }

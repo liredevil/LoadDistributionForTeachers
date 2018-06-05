@@ -1,14 +1,14 @@
-﻿@model IEnumerable<LoadDistributionForTeachers.WEB.Models.LoadSubgroupViewModel>
+﻿@model IEnumerable<LoadDistributionForTeachers.WEB.Models.LoadFlowViewModel>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Список нагрузок на подгруппу</h2>
+<h2>Список лекционных нагрузок</h2>
 
 <p>
     <div class="btn-group">
-        @Html.ActionLink("Добавить групповую нагрузку", "CreateLoad", "LoadSubgroup", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Добавить нагрузку", "CreateLoad", "LoadFlow", null, new { @class = "btn btn-primary" })
     </div>
 </p>
 <table class="table">
@@ -19,11 +19,8 @@
         <th>
             @Html.DisplayNameFor(model => model.DisciplineName)
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.NumberOfHoursOfLectures)
-        </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.NumberOfHoursOfPractice)
+            @Html.DisplayNameFor(model => model.NumberOfHoursOfLectures)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.NumberOfHoursOfOffset)
@@ -32,7 +29,7 @@
             @Html.DisplayNameFor(model => model.NumberOfHoursOfExamination)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GroupNumber)
+            @Html.DisplayNameFor(model => model.Title)
         </th>
         <th></th>
     </tr>
@@ -45,11 +42,8 @@
         <td>
             @Html.DisplayFor(modelItem => item.DisciplineName)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.NumberOfHoursOfLectures)
-        </td>*@
         <td>
-            @Html.DisplayFor(modelItem => item.NumberOfHoursOfPractice)
+            @Html.DisplayFor(modelItem => item.NumberOfHoursOfLectures)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NumberOfHoursOfOffset)
@@ -58,7 +52,7 @@
             @Html.DisplayFor(modelItem => item.NumberOfHoursOfExamination)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.GroupNumber)
+            @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
             @Html.ActionLink("Удалить", "DeleteLoad", new { id = item.Id })

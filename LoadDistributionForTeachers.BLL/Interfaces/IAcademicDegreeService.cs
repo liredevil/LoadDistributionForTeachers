@@ -14,6 +14,5 @@ namespace LoadDistributionForTeachers.BLL.Interfaces
         IEnumerable<AcademicDegreeDTO> GetAcademicDegrees();
         AcademicDegreeDTO GetAcademicDegree(int? id);
         void Dispose();
-
     }
 }

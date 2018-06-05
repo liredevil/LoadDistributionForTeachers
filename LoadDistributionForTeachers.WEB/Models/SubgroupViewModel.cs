@@ -16,7 +16,18 @@ namespace LoadDistributionForTeachers.WEB.Models
         public int NumberOfStudents { get; set; }
 
         [Required]
-        [Display(Name = "Номер группы")]
+        [Display(Name = "Номер подгруппы")]
         public int GroupNumber { get; set; }
+        [Required]
+        [Display(Name = "Номер группы")]
+        public int GroupNumber2 { get; set; }///номер группы
+
+        [Required]
+        [Display(Name = "Имя потока")]
+        public int LectureFlowId { get; set; }
+
+        
+        [Display(Name = "Имя потока")]
+        public string LectureFlowTitle { get; set; }
     }
 }

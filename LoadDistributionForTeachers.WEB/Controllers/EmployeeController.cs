@@ -12,7 +12,6 @@ using LoadDistributionForTeachers.BLL.Infrastructure;
 
 namespace LoadDistributionForTeachers.WEB.Controllers
 {
-    [Authorize]
     public class EmployeeController : Controller
     {
         IEmployeeService employeeService;

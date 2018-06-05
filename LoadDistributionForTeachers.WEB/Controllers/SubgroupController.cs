@@ -14,10 +14,12 @@ namespace LoadDistributionForTeachers.WEB.Controllers
     public class SubgroupController : Controller
     {
         ISubgroupService subgroupService;
+        ILectureFlowService lectureFlowService;
 
-        public SubgroupController(ISubgroupService subgroupService)
+        public SubgroupController(ISubgroupService subgroupService, ILectureFlowService lectureFlowService)
         {
             this.subgroupService = subgroupService;
+            this.lectureFlowService = lectureFlowService;
         }
 
         // GET: Subgroup
@@ -34,11 +36,18 @@ namespace LoadDistributionForTeachers.WEB.Controllers
         [HttpGet]
         public ActionResult CreateSubgroup()
         {
+            IEnumerable<LectureFlowDTO> lectureFlowDTOs = lectureFlowService.GetLectureFlows();
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<LectureFlowDTO, LectureFlowViewModel>()).CreateMapper();
+            var lectureFlows = mapper.Map<IEnumerable<LectureFlowDTO>, List<LectureFlowViewModel>>(lectureFlowDTOs);
+
+            SelectList lectureFlowsList = new SelectList(lectureFlows, "Id", "Title");
+            ViewBag.LectureFlows = lectureFlowsList;
+
             return View();
         }
 
         [HttpPost]
-        public ActionResult CreateSubgroup(SubgroupViewModel subgroupViewModel)
+        public ActionResult CreateSubgroup(SubgroupViewModel subgroupViewModel,int lectureFlowId)
         {
             try
             {
@@ -47,7 +56,9 @@ namespace LoadDistributionForTeachers.WEB.Controllers
                     var subgroupDTO = new SubgroupDTO
                     {
                         GroupNumber = subgroupViewModel.GroupNumber,
-                        NumberOfStudents = subgroupViewModel.NumberOfStudents
+                        GroupNumber2 = subgroupViewModel.GroupNumber2,
+                        NumberOfStudents = subgroupViewModel.NumberOfStudents,
+                        LectureFlowId = lectureFlowId
                     };
 
                     subgroupService.CreateSubgroup(subgroupDTO);
@@ -86,6 +97,7 @@ namespace LoadDistributionForTeachers.WEB.Controllers
         protected override void Dispose(bool disposing)
         {
             subgroupService.Dispose();
+            lectureFlowService.Dispose();
             base.Dispose(disposing);
         }
     }

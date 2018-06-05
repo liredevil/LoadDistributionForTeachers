@@ -11,34 +11,32 @@ using System.Web.Mvc;
 
 namespace LoadDistributionForTeachers.WEB.Controllers
 {
-    public class LoadSubgroupController : Controller
+    public class LoadFlowController : Controller
     {
-        ILoadSubgroupService loadService;
-        ISubgroupService subgroupService;
+        ILoadFlowService loadFlowService;
+        ILectureFlowService lectureFlowService;
         IEmployeeService employeeService;
         IContentOfThePlanService contentOfThePlanService;
         IDisciplineService disciplineService;
 
-        public LoadSubgroupController(ILoadSubgroupService loadService, IContentOfThePlanService contentOfThePlanService, ISubgroupService subgroupService, IEmployeeService employeeService, IDisciplineService disciplineService)
+        public LoadFlowController(ILoadFlowService loadFlowService, IContentOfThePlanService contentOfThePlanService, ILectureFlowService lectureFlowService, IEmployeeService employeeService, IDisciplineService disciplineService)
         {
-            this.loadService = loadService;
-            this.subgroupService = subgroupService;
+            this.loadFlowService = loadFlowService;
+            this.lectureFlowService = lectureFlowService;
             this.employeeService = employeeService;
             this.contentOfThePlanService = contentOfThePlanService;
             this.disciplineService = disciplineService;
-            
         }
 
-        // GET: Load
+        // GET: LoadFlow
         public ActionResult Index()
         {
-            IEnumerable<LoadSubgroupDTO> loadDTOs = loadService.GetLoads();
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<LoadSubgroupDTO, LoadSubgroupViewModel>())
-            .CreateMapper();
+            IEnumerable<LoadFlowDTO> lectureFlowDTOs = loadFlowService.GetLoadFlows();
 
-            var loads = mapper.Map<IEnumerable<LoadSubgroupDTO>, List<LoadSubgroupViewModel>>(loadDTOs);
-            
-            return View(loads);
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<LoadFlowDTO, LoadFlowViewModel>()).CreateMapper();
+            var disciplines = mapper.Map<IEnumerable<LoadFlowDTO>, List<LoadFlowViewModel>>(lectureFlowDTOs);
+
+            return View(disciplines);
         }
 
         [HttpGet]
@@ -50,11 +48,11 @@ namespace LoadDistributionForTeachers.WEB.Controllers
             SelectList employeesList = new SelectList(employees, "Id", "LastName");
             ViewBag.Employees = employeesList;
 
-            IEnumerable<DisciplineDTO> disciplineDTOs = disciplineService.GetDisciplines();
-            mapper = new MapperConfiguration(cfg => cfg.CreateMap<DisciplineDTO, DisciplineViewModel>()).CreateMapper();
-            var disciplines = mapper.Map<IEnumerable<DisciplineDTO>, List<DisciplineViewModel>>(disciplineDTOs);
-            SelectList disciplinesList = new SelectList(disciplines, "Id", "Name");
-            ViewBag.Disciplines = disciplinesList;
+            //IEnumerable<DisciplineDTO> disciplineDTOs = disciplineService.GetDisciplines();
+            //mapper = new MapperConfiguration(cfg => cfg.CreateMap<DisciplineDTO, DisciplineViewModel>()).CreateMapper();
+            //var disciplines = mapper.Map<IEnumerable<DisciplineDTO>, List<DisciplineViewModel>>(disciplineDTOs);
+            //SelectList disciplinesList = new SelectList(disciplines, "Id", "Name");
+            //ViewBag.Disciplines = disciplinesList;
 
             IEnumerable<ContentOfThePlanDTO> contentOfThePlanDTOs = contentOfThePlanService.GetContentOfThePlans();
             mapper = new MapperConfiguration(cfg => cfg.CreateMap<ContentOfThePlanDTO, ContentOfThePlanViewModel>()).CreateMapper();
@@ -62,31 +60,30 @@ namespace LoadDistributionForTeachers.WEB.Controllers
             SelectList contentOfThePlansList = new SelectList(contentOfThePlans, "Id", "Id");
             ViewBag.ContentOfThePlans = contentOfThePlansList;
 
-            IEnumerable<SubgroupDTO> subgroupDTOs = subgroupService.GetSubgroups();
-            mapper = new MapperConfiguration(cfg => cfg.CreateMap<SubgroupDTO, SubgroupViewModel>()).CreateMapper();
-            var subgroups = mapper.Map<IEnumerable<SubgroupDTO>, List<SubgroupViewModel>>(subgroupDTOs);
-            SelectList subgroupsList = new SelectList(subgroups, "Id", "GroupNumber");
-            ViewBag.Subgroups = subgroupsList;
+            IEnumerable<LectureFlowDTO> lectureFlowDTOs = lectureFlowService.GetLectureFlows();
+            mapper = new MapperConfiguration(cfg => cfg.CreateMap<LectureFlowDTO, LectureFlowViewModel>()).CreateMapper();
+            var subgroups = mapper.Map<IEnumerable<LectureFlowDTO>, List<LectureFlowViewModel>>(lectureFlowDTOs);
+            SelectList lectureFlowList = new SelectList(subgroups, "Id", "Title");
+            ViewBag.LectureFlows = lectureFlowList;
 
             return View();
         }
 
         [HttpPost]
-        public ActionResult CreateLoad(LoadSubgroupViewModel loadViewModel, int Employee/*, int Discipline*/, int ContentOfThePlan, int GroupNumber)
+        public ActionResult CreateLoad(LoadFlowDTO loadViewModel, int Employee, int ContentOfThePlan,int LectureFlow)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var loadDTO = new LoadSubgroupDTO
+                    var loadDTO = new LoadFlowDTO
                     {
                         EmployeeId = Employee,
-                        //DisciplineId = Discipline,
                         ContentOfThePlanId = ContentOfThePlan,
-                        SubgroupId = GroupNumber
+                        LectureFlowId = LectureFlow
                     };
 
-                    loadService.CreateLoad(loadDTO);
+                    loadFlowService.CreateLoadFlow(loadDTO);
 
                     TempData["message"] = string.Format("Load successful added");
 
@@ -101,75 +98,11 @@ namespace LoadDistributionForTeachers.WEB.Controllers
             return View(loadViewModel);
         }
 
-        [HttpGet]
-        public ActionResult CountLoad()
-        {
-            IEnumerable<LoadSubgroupDTO> loadDTOs = loadService.GetLoads();
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<LoadSubgroupDTO, LoadSubgroupViewModel>())
-            .CreateMapper();
-
-            var loads = mapper.Map<IEnumerable<LoadSubgroupDTO>, List<LoadSubgroupViewModel>>(loadDTOs);
-
-
-            List<LoadSubgroupViewModel> getList = new List<LoadSubgroupViewModel>();
-            foreach(var item in loads)
-            {
-                getList.Add(new LoadSubgroupViewModel
-                {
-                    Name = item.Name,
-                    //NumberOfHoursOfLectures = item.NumberOfHoursOfLectures,
-                    NumberOfHoursOfPractice = item.NumberOfHoursOfPractice,
-                    NumberOfHoursOfOffset = item.NumberOfHoursOfOffset,
-                    NumberOfHoursOfExamination = item.NumberOfHoursOfExamination
-                });
-            }
-            //int a = 0;
-            int b = 0;
-            List<LoadSubgroupViewModel> newGetList = new List<LoadSubgroupViewModel>();
-            int count = newGetList.Count();///счетчик
-            int flag = 0;
-            for (int i = 0; i < getList.Count; i++)
-            {
-                //a = getList[i].NumberOfHoursOfLectures;
-                b = getList[i].NumberOfHoursOfPractice + getList[i].NumberOfHoursOfOffset + getList[i].NumberOfHoursOfExamination;
-                for (int j = i + 1; j < getList.Count; j++)
-                {
-                    if(getList[i].Name == getList[j].Name)
-                    {
-                        //a += getList[j].NumberOfHoursOfLectures;
-                        b += getList[j].NumberOfHoursOfPractice + getList[j].NumberOfHoursOfOffset + getList[j].NumberOfHoursOfExamination;
-                    }
-                }
-
-                for(int i1 = 0; i1 < newGetList.Count;i1++)
-                {
-                    if(newGetList[i1].Name == getList[i].Name)
-                    {
-                        flag = 1;
-                    }
-                }
-                if(flag != 1)
-                {
-                    newGetList.Add(new LoadSubgroupViewModel
-                    {
-                        Name = getList[i].Name,
-                        //NumberOfHoursOfLectures = a,
-                        NumberOfHoursOfPractice = b
-                    });
-                }
-                
-                //a = 0;
-                b = 0;
-                flag = 0;
-            }
-            return View(newGetList);
-        }
-
         public ActionResult DeleteLoad(int id)
         {
             try
             {
-                loadService.DeleteLoad(id);
+                loadFlowService.DeleteLoadFlow(id);
 
                 TempData["message"] = string.Format("Нагрузка была удалена");
 
@@ -183,6 +116,70 @@ namespace LoadDistributionForTeachers.WEB.Controllers
             return RedirectToAction("index");
         }
 
+        [HttpGet]
+        public ActionResult CountLoad()
+        {
+            IEnumerable<LoadFlowDTO> loadDTOs = loadFlowService.GetLoadFlows();
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<LoadFlowDTO, LoadFlowViewModel>())
+            .CreateMapper();
+
+            var loads = mapper.Map<IEnumerable<LoadFlowDTO>, List<LoadFlowViewModel>>(loadDTOs);
+
+
+            List<LoadFlowViewModel> getList = new List<LoadFlowViewModel>();
+            foreach (var item in loads)
+            {
+                getList.Add(new LoadFlowViewModel
+                {
+                    Name = item.Name,
+                    //NumberOfHoursOfLectures = item.NumberOfHoursOfLectures,
+                    NumberOfHoursOfLectures = item.NumberOfHoursOfLectures,
+                    NumberOfHoursOfOffset = item.NumberOfHoursOfOffset,
+                    NumberOfHoursOfExamination = item.NumberOfHoursOfExamination
+                });
+            }
+            //int a = 0;
+            int b = 0;
+            List<LoadFlowViewModel> newGetList = new List<LoadFlowViewModel>();
+            int count = newGetList.Count();///счетчик
+            int flag = 0;
+            for (int i = 0; i < getList.Count; i++)
+            {
+                //a = getList[i].NumberOfHoursOfLectures;
+                b = getList[i].NumberOfHoursOfLectures + getList[i].NumberOfHoursOfOffset + getList[i].NumberOfHoursOfExamination;
+                for (int j = i + 1; j < getList.Count; j++)
+                {
+                    if (getList[i].Name == getList[j].Name)
+                    {
+                        //a += getList[j].NumberOfHoursOfLectures;
+                        b += getList[j].NumberOfHoursOfLectures + getList[j].NumberOfHoursOfOffset + getList[j].NumberOfHoursOfExamination;
+                    }
+                }
+
+                for (int i1 = 0; i1 < newGetList.Count; i1++)
+                {
+                    if (newGetList[i1].Name == getList[i].Name)
+                    {
+                        flag = 1;
+                    }
+                }
+                if (flag != 1)
+                {
+                    newGetList.Add(new LoadFlowViewModel
+                    {
+                        Name = getList[i].Name,
+                        //NumberOfHoursOfLectures = a,
+                        NumberOfHoursOfLectures = b
+                    });
+                }
+
+                //a = 0;
+                b = 0;
+                flag = 0;
+            }
+            return View(newGetList);
+        }
+
         public JsonResult GetRegions(int Id)
         {
             IEnumerable<ContentOfThePlanDTO> contentOfThePlanDTOs = contentOfThePlanService.GetContentOfThePlans();
@@ -191,16 +188,20 @@ namespace LoadDistributionForTeachers.WEB.Controllers
             {
                 Name = x.DisciplineTitle,
                 NumberOfHoursOfLectures = x.NumberOfHoursOfLectures,
-                NumberOfHoursOfPractice = x.NumberOfHoursOfPractice,
                 Reporting = x.Reporting
 
             }).ToList());
+            //return Json(db.Regiones.Where(r => r.CountryId == Id).Select(x => new
+            //{
+            //    Id = x.Id,
+            //    Name = x.Name
+            //}).ToList());
         }
 
         protected override void Dispose(bool disposing)
         {
-            loadService.Dispose();
-            subgroupService.Dispose();
+            loadFlowService.Dispose();
+            lectureFlowService.Dispose();
             employeeService.Dispose();
             contentOfThePlanService.Dispose();
             disciplineService.Dispose();

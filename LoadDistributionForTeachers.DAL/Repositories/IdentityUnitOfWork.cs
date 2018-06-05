@@ -24,6 +24,8 @@ namespace LoadDistributionForTeachers.DAL.Repositories
         //private TypeOfEmployeeRepository typeOfEmployeeRepository;
         private ContentOfThePlanRepository contentOfThePlanRepository;
         private LoadSubgroupRepository loadSubgroupRepository;
+        private LoadFlowRepository loadFlowRepository;
+        private LectureFlowRepository lectureFlowRepository;
 
         public IdentityUnitOfWork(string connectionString)
         {
@@ -153,6 +155,32 @@ namespace LoadDistributionForTeachers.DAL.Repositories
                 }
 
                 return loadSubgroupRepository;
+            }
+        }
+
+        public IRepository<LoadFlow> LoadFlows
+        {
+            get
+            {
+                if (loadFlowRepository == null)
+                {
+                    loadFlowRepository = new LoadFlowRepository(db);
+                }
+
+                return loadFlowRepository;
+            }
+        }
+
+        public IRepository<LectureFlow> LectureFlows
+        {
+            get
+            {
+                if (lectureFlowRepository == null)
+                {
+                    lectureFlowRepository = new LectureFlowRepository(db);
+                }
+
+                return lectureFlowRepository;
             }
         }
 

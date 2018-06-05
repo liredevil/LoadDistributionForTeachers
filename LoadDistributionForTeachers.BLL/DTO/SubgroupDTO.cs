@@ -12,6 +12,11 @@ namespace LoadDistributionForTeachers.BLL.DTO
 
         public int NumberOfStudents { get; set; }
 
-        public int GroupNumber { get; set; }
+        public int GroupNumber { get; set; }//подгруппа
+        public int GroupNumber2 { get; set; }///номер группы
+
+        public int LectureFlowId { get; set; }
+        public string LectureFlowTitle { get; set; }
+
     }
 }
